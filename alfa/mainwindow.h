@@ -10,6 +10,7 @@
 #include <QComboBox>
 #include <QStringList>
 #include <QTimer>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +32,7 @@ private:
     Ui::MainWindow * ui;
     int timerId =0;
     QList<QSerialPortInfo> listaPortasCOM = QSerialPortInfo::availablePorts();
+    QSerialPort serial;
 };
 
 #endif // MAINWINDOW_H

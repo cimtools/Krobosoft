@@ -8,6 +8,22 @@ MainWindow::MainWindow(QWidget *parent) :
     listaPortasCOM = QSerialPortInfo::availablePorts();
     foreach(QSerialPortInfo info, listaPortasCOM) ui->comboBox->addItem(info.portName());
     this->startTimer(200); //Timer usado para checar se houve mudaça na lista de portas COM.
+    if(!serial.setBaudRate(QSerialPort::Baud9600))
+            qDebug() << serial.errorString();
+    if(!serial.setDataBits(QSerialPort::Data7))
+            qDebug() << serial.errorString();
+    if(!serial.setParity(QSerialPort::EvenParity))
+            qDebug() << serial.errorString();
+    if(!serial.setFlowControl(QSerialPort::HardwareControl))
+            qDebug() << serial.errorString();
+    if(!serial.setStopBits(QSerialPort::OneStop))
+            qDebug() << serial.errorString();
+    QObject::connect(&serial, &QSerialPort::readyRead, [&] //TODO ajustar essa conexão, escopo provavelmente está errado
+    {
+        qDebug() << "New data available: " << serial.bytesAvailable();
+        QByteArray datas = serial.readAll();
+        qDebug() << datas;
+    });
 }
 
 MainWindow::~MainWindow(){
@@ -15,7 +31,11 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::on_comboBox_activated(const QString &arg1){ //quando selecionar uma das opções da lista
-    QTextStream(stdout)<<"A porta selecionada eh " << arg1;
+    QTextStream(stdout)<<"A porta selecionada eh " << arg1 << "\n";
+    serial.close();
+    serial.setPortName(arg1);
+    if(!serial.open(QIODevice::ReadOnly))
+            qDebug() << serial.errorString();
 }
 
 void MainWindow::timerEvent(QTimerEvent *a){
