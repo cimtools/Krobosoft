@@ -30,6 +30,7 @@ private slots:
 private:
     Ui::MainWindow * ui;
     int timerId =0;
+    QList<QSerialPortInfo> listaPortasCOM = QSerialPortInfo::availablePorts();
 };
 
 #endif // MAINWINDOW_H

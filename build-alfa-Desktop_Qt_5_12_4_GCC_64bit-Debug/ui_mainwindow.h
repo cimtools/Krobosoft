@@ -23,13 +23,13 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QWidget * centralWidget;
-    QComboBox * comboBox;
-    QMenuBar * menuBar;
-    QToolBar * mainToolBar;
-    QStatusBar * statusBar;
+    QWidget *centralWidget;
+    QComboBox *comboBox;
+    QMenuBar *menuBar;
+    QToolBar *mainToolBar;
+    QStatusBar *statusBar;
 
-    void setupUi(QMainWindow * MainWindow)
+    void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
