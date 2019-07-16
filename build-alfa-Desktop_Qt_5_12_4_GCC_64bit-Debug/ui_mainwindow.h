@@ -13,12 +13,10 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolButton>
@@ -30,15 +28,12 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QFrame *line;
     QGroupBox *groupBox;
     QTextBrowser *textBrowser;
-    QScrollBar *verticalScrollBar;
     QToolButton *toolButton;
     QToolButton *toolButton_2;
     QToolButton *toolButton_3;
     QToolButton *toolButton_4;
-    QFrame *line_2;
     QGroupBox *groupBox_3;
     QToolButton *toolButton_9;
     QToolButton *toolButton_10;
@@ -58,28 +53,21 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(815, 532);
+        MainWindow->resize(954, 426);
+        MainWindow->setAutoFillBackground(false);
+        MainWindow->setStyleSheet(QString::fromUtf8("\n"
+"background-color: rgb(85, 87, 83);"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        line = new QFrame(centralWidget);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setGeometry(QRect(0, -10, 821, 20));
-        line->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(470, 10, 471, 321));
         groupBox->setStyleSheet(QString::fromUtf8("background-color: rgb(186, 189, 182);"));
         textBrowser = new QTextBrowser(groupBox);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(40, 20, 331, 251));
+        textBrowser->setGeometry(QRect(40, 20, 421, 251));
         textBrowser->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
         textBrowser->setReadOnly(false);
-        verticalScrollBar = new QScrollBar(groupBox);
-        verticalScrollBar->setObjectName(QString::fromUtf8("verticalScrollBar"));
-        verticalScrollBar->setGeometry(QRect(360, 20, 16, 251));
-        verticalScrollBar->setOrientation(Qt::Vertical);
         toolButton = new QToolButton(groupBox);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
         toolButton->setGeometry(QRect(10, 30, 26, 24));
@@ -92,12 +80,6 @@ public:
         toolButton_4 = new QToolButton(groupBox);
         toolButton_4->setObjectName(QString::fromUtf8("toolButton_4"));
         toolButton_4->setGeometry(QRect(10, 120, 26, 24));
-        line_2 = new QFrame(groupBox);
-        line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setGeometry(QRect(-17, 0, 20, 281));
-        line_2->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
-        line_2->setFrameShape(QFrame::VLine);
-        line_2->setFrameShadow(QFrame::Sunken);
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setGeometry(QRect(10, 10, 451, 321));
@@ -127,7 +109,7 @@ public:
         MainWindow->setStatusBar(statusBar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 815, 22));
+        menuBar->setGeometry(QRect(0, 0, 954, 22));
         menuLabBot = new QMenu(menuBar);
         menuLabBot->setObjectName(QString::fromUtf8("menuLabBot"));
         menuFerramentas = new QMenu(menuBar);
