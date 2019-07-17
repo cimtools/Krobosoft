@@ -211,7 +211,7 @@ background-color: rgb(85, 87, 83);</string>
        <x>40</x>
        <y>20</y>
        <width>401</width>
-       <height>231</height>
+       <height>221</height>
       </rect>
      </property>
      <property name="minimumSize">
