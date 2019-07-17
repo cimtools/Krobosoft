@@ -11,6 +11,7 @@
 #include <QStringList>
 #include <QTimer>
 #include <QDebug>
+#include <QLineEdit>
 
 namespace Ui {
 class MainWindow;
