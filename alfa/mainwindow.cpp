@@ -18,42 +18,56 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << serial.errorString();
     if(!serial.setStopBits(QSerialPort::OneStop))
         qDebug() << serial.errorString();
-    QObject::connect(&serial, &QSerialPort::readyRead, [&] //TODO ajustar essa conexão, escopo provavelmente está errado
-    {
-                         qDebug() << "New data available: " << serial.bytesAvailable();
-                         QString datas = serial.readAll();
-                         qDebug() << datas;
-                         //ui->textBrowser_2->append(datas);
-                         ui->textBrowser_2->moveCursor (QTextCursor::End);
-                         ui->textBrowser_2->insertPlainText (datas);
-                         ui->textBrowser_2->moveCursor (QTextCursor::End);
-                     });
+    QObject::connect(&serial, &QSerialPort::readyRead,
+        [&]{ //Função lambda chamada pelo sinal de informção no buffer de leitura.
+            qDebug() << "Quantidade de bytes disponíveis para leitura: " << serial.bytesAvailable();
+            QString datas = serial.readAll();
+            qDebug() <<"Dados lidos: "<< datas;
+            //ui->textBrowser_2->append(datas);
+            ui->textBrowser_2->moveCursor (QTextCursor::End);
+            ui->textBrowser_2->insertPlainText (datas);
+            ui->textBrowser_2->moveCursor (QTextCursor::End);
+        }
+    );//Fim dos argumentos do connect.
+
+    QObject::connect(ui->lineEdit, &QLineEdit::returnPressed,
+        [&]{
+            static QString buffer;
+            qDebug() << "Enviando \n";
+            buffer = ui->lineEdit->text() + "\n";
+            qDebug() << buffer;
+            serial.write( buffer.toStdString().c_str(), buffer.size() );
+            ui->lineEdit->setText("\n");
+
+        }
+    );
 }
 
 MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::on_comboBox_activated(const QString &arg1){ //quando selecionar uma das opções da lista
+void MainWindow::on_comboBox_activated(const QString &arg1){ //É chamada quando seleciona um item da comboBox
     QTextStream(stdout)<<"A porta selecionada eh " << arg1 << "\n";
     serial.close();
     serial.setPortName(arg1);
-    if(!serial.open(QIODevice::ReadOnly))
+    if(!serial.open(QIODevice::ReadWrite))
         qDebug() << serial.errorString();
 }
 
 void MainWindow::timerEvent(QTimerEvent *a){
     //Se a lista atual de portas COM for diferente da armazenada, atualizar a lista tanto na GUI quanto a armazenada na classe.
     QList<QSerialPortInfo> listaAtualPortas = QSerialPortInfo::availablePorts();
-    if( !std::equal( listaPortasCOM.begin(), listaPortasCOM.end(),
-                     listaAtualPortas.begin(),
-                     []( const QSerialPortInfo & a, const QSerialPortInfo & b ){
-                     return (a.portName() == b.portName())? true: false;
-}
-                     ) ) {
+    if(
+        !std::equal( listaPortasCOM.begin(), listaPortasCOM.end(), listaAtualPortas.begin(),
+            []( const QSerialPortInfo & a, const QSerialPortInfo & b ){//Função lambda que implementa o critério de comparação.
+                return (a.portName() == b.portName())? true: false;
+            }
+        )//Fim dos argumentos do std::equal.
+    ){ //Fim dos argumentos do if, início do bloco.
         ui->comboBox->clear();
         foreach(QSerialPortInfo info, listaAtualPortas) ui->comboBox->addItem(info.portName());
         listaPortasCOM = listaAtualPortas;
-    }
+    }//Fim do bloco if.
 }
 

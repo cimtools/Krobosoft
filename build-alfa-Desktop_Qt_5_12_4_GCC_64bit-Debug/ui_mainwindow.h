@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -41,6 +42,7 @@ public:
     QToolButton *toolButton_12;
     QTextBrowser *textBrowser_2;
     QComboBox *comboBox;
+    QLineEdit *lineEdit;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
     QMenu *menuLabBot;
@@ -83,6 +85,7 @@ public:
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setGeometry(QRect(10, 10, 451, 321));
+        groupBox_3->setAutoFillBackground(false);
         groupBox_3->setStyleSheet(QString::fromUtf8("background-color: rgb(186, 189, 182);"));
         toolButton_9 = new QToolButton(groupBox_3);
         toolButton_9->setObjectName(QString::fromUtf8("toolButton_9"));
@@ -98,11 +101,14 @@ public:
         toolButton_12->setGeometry(QRect(10, 120, 26, 24));
         textBrowser_2 = new QTextBrowser(groupBox_3);
         textBrowser_2->setObjectName(QString::fromUtf8("textBrowser_2"));
-        textBrowser_2->setGeometry(QRect(40, 20, 401, 251));
+        textBrowser_2->setGeometry(QRect(40, 20, 401, 231));
         textBrowser_2->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);"));
         comboBox = new QComboBox(groupBox_3);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(160, 280, 111, 25));
+        lineEdit = new QLineEdit(groupBox_3);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setGeometry(QRect(40, 250, 401, 25));
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -136,12 +142,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        groupBox->setTitle(QApplication::translate("MainWindow", "   Editor de Programas", nullptr));
+        groupBox->setTitle(QApplication::translate("MainWindow", "                                                 Editor de Programas", nullptr));
         toolButton->setText(QApplication::translate("MainWindow", "C", nullptr));
         toolButton_2->setText(QApplication::translate("MainWindow", "D", nullptr));
         toolButton_3->setText(QApplication::translate("MainWindow", "U", nullptr));
         toolButton_4->setText(QApplication::translate("MainWindow", "L", nullptr));
-        groupBox_3->setTitle(QApplication::translate("MainWindow", "  Terminal do Controlador TIPO B", nullptr));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "                               Terminal do Controlador TIPO B", nullptr));
         toolButton_9->setText(QApplication::translate("MainWindow", "C", nullptr));
         toolButton_10->setText(QApplication::translate("MainWindow", "D", nullptr));
         toolButton_11->setText(QApplication::translate("MainWindow", "U", nullptr));
