@@ -31,14 +31,12 @@ MainWindow::MainWindow(QWidget *parent) :
     );//Fim dos argumentos do connect.
 
     QObject::connect(ui->lineEdit, &QLineEdit::returnPressed,
-        [&]{
+        [&]{//Função lambda chamada quando é pressionado o return no LineEdit
             static QString buffer;
-            qDebug() << "Enviando \n";
             buffer = ui->lineEdit->text() + "\n";
-            qDebug() << buffer;
+            qDebug() << "Enviando pela serial: " << buffer ;
             serial.write( buffer.toStdString().c_str(), buffer.size() );
-            ui->lineEdit->setText("\n");
-
+            ui->lineEdit->setText("");
         }
     );
 }
