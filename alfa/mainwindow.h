@@ -12,6 +12,9 @@
 #include <QTimer>
 #include <QDebug>
 #include <QLineEdit>
+#include <QFile>
+#include <QFileDialog>
+#include <QDir>
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +32,9 @@ private slots:
     void on_comboBox_activated(const QString &arg1);
 
     void timerEvent(QTimerEvent *a);
+
+    void on_save_button_clicked();
+
 private:
     Ui::MainWindow * ui;
     int timerId =0;

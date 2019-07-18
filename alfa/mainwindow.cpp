@@ -69,3 +69,31 @@ void MainWindow::timerEvent(QTimerEvent *a){
     }//Fim do bloco if.
 }
 
+//void MainWindow::saveFile(string )
+
+void MainWindow::on_save_button_clicked()
+{
+    //Pega o conteúdo da caixa de texto
+    static QString program;
+    program = ui->text_edition->toPlainText();
+    //Cria File Dialog próprio
+    QFileDialog saveAs(this);
+    saveAs.setFileMode(QFileDialog::AnyFile);
+    saveAs.setNameFilter(tr("All files(*.acl*);;Text File(*.txt)"));
+    saveAs.setViewMode(QFileDialog::Detail);
+
+    QStringList filename;
+    if(saveAs.exec()){
+        filename = saveAs.selectedFiles();
+    }
+    QFile file( filename.at(0) );
+    if(file.open(QIODevice::ReadWrite)){
+        QTextStream content(&file);
+        content << program << endl;
+        ui->textBrowser_2->insertPlainText("Arquivo salvo");
+    } else {
+        ui->textBrowser_2->insertPlainText("Não foi possível salvar o arquivo");
+    }
+    file.close();
+
+}
