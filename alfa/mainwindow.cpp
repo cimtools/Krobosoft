@@ -24,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
             QString datas = serial.readAll();
             qDebug() <<"Dados lidos: "<< datas;
             //ui->textBrowser_2->append(datas);
+            ui->textBrowser_2->moveCursor (QTextCursor::End);
+            ui->textBrowser_2->insertPlainText (datas);
+            ui->textBrowser_2->moveCursor (QTextCursor::End);
         }
     );//Fim dos argumentos do connect.
 
@@ -39,7 +42,6 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 MainWindow::~MainWindow(){
-    serial.close();
     delete ui;
 }
 
