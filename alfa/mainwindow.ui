@@ -243,6 +243,7 @@ background-color: rgb(85, 87, 83);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(0, 0, 0);
+<<<<<<< HEAD
 color: rgb(78, 154, 6)</string>
      </property>
      <property name="readOnly">
@@ -255,6 +256,10 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:italic;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+=======
+color: rgb(78, 154, 6);
+</string>
+>>>>>>> 9b58f9b28b2a0bef591f247b87b23d4acdcc1d2d
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox">
@@ -277,8 +282,14 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
      <property name="styleSheet">
+<<<<<<< HEAD
       <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(78, 154, 6)</string>
+=======
+      <string notr="true">background: rgb(0, 0, 0);
+color: rgb(74, 158, 6);
+</string>
+>>>>>>> 9b58f9b28b2a0bef591f247b87b23d4acdcc1d2d
      </property>
     </widget>
    </widget>
@@ -289,8 +300,13 @@ color: rgb(78, 154, 6)</string>
     <rect>
      <x>0</x>
      <y>0</y>
+<<<<<<< HEAD
      <width>12312311</width>
      <height>22</height>
+=======
+     <width>954</width>
+     <height>20</height>
+>>>>>>> 9b58f9b28b2a0bef591f247b87b23d4acdcc1d2d
     </rect>
    </property>
    <widget class="QMenu" name="menuLabBot">

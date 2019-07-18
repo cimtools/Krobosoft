@@ -24,22 +24,16 @@ MainWindow::MainWindow(QWidget *parent) :
             QString datas = serial.readAll();
             qDebug() <<"Dados lidos: "<< datas;
             //ui->textBrowser_2->append(datas);
-            ui->textEdit_2->moveCursor (QTextCursor::End);
-            ui->textEdit_2->insertPlainText (datas);
-            ui->textEdit_2->moveCursor (QTextCursor::End);
         }
     );//Fim dos argumentos do connect.
 
     QObject::connect(ui->lineEdit, &QLineEdit::returnPressed,
         [&]{//Função lambda chamada quando é pressionado o return no LineEdit
-            static QString buffera;
-            buffera = ui->lineEdit->text();
-            qDebug() << "Enviando pela serial: " << buffera ;
-            if(-1 != serial.write( buffera.toStdString().c_str(), buffera.size() )){
-                ui->lineEdit->setText("");
-            }else{
-                ui->lineEdit->setText("Erro ao enviar.");
-            }
+            static QString buffer;
+            buffer = ui->lineEdit->text() + "\r";
+            qDebug() << "Enviando pela serial: " << buffer ;
+            serial.write( buffer.toStdString().c_str(), buffer.size() );
+            ui->lineEdit->setText("");
         }
     );
 }
