@@ -185,7 +185,9 @@ background-color: rgb(85, 87, 83);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(211, 215, 207);</string>
+      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(78, 154, 6);
+</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox">
@@ -207,6 +209,11 @@ background-color: rgb(85, 87, 83);</string>
        <height>25</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background: rgb(0, 0, 0);
+color: rgb(74, 158, 6);
+</string>
+     </property>
     </widget>
    </widget>
   </widget>
@@ -217,7 +224,7 @@ background-color: rgb(85, 87, 83);</string>
      <x>0</x>
      <y>0</y>
      <width>954</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLabBot">
