@@ -32,7 +32,7 @@
    <string>MainWindow</string>
   </property>
   <property name="autoFillBackground">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -217,7 +217,7 @@ background-color: rgb(85, 87, 83);</string>
       <string>L</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_2">
+    <widget class="QTextEdit" name="textBrowser_2">
      <property name="geometry">
       <rect>
        <x>40</x>
