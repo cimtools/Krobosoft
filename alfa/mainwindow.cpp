@@ -10,11 +10,11 @@ MainWindow::MainWindow(QWidget *parent) :
     this->startTimer(200); //Timer usado para checar se houve mudaça na lista de portas COM.
     if(!serial.setBaudRate(QSerialPort::Baud9600))
         qDebug() << serial.errorString();
-    if(!serial.setDataBits(QSerialPort::Data7))
+    if(!serial.setDataBits(QSerialPort::Data8))
         qDebug() << serial.errorString();
-    if(!serial.setParity(QSerialPort::EvenParity))
+    if(!serial.setParity(QSerialPort::NoParity))
         qDebug() << serial.errorString();
-    if(!serial.setFlowControl(QSerialPort::HardwareControl))
+    if(!serial.setFlowControl(QSerialPort::NoFlowControl))
         qDebug() << serial.errorString();
     if(!serial.setStopBits(QSerialPort::OneStop))
         qDebug() << serial.errorString();
@@ -32,16 +32,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(ui->lineEdit, &QLineEdit::returnPressed,
         [&]{//Função lambda chamada quando é pressionado o return no LineEdit
-            static QString buffer;
-            buffer = ui->lineEdit->text();
-            qDebug() << "Enviando pela serial: " << buffer ;
-            serial.write( buffer.toStdString().c_str(), buffer.size() );
-            ui->lineEdit->setText("");
+            static QString buffera;
+            buffera = ui->lineEdit->text();
+            qDebug() << "Enviando pela serial: " << buffera ;
+            if(-1 != serial.write( buffera.toStdString().c_str(), buffera.size() )){
+                ui->lineEdit->setText("");
+            }else{
+                ui->lineEdit->setText("Erro ao enviar.");
+            }
         }
     );
 }
 
 MainWindow::~MainWindow(){
+    serial.close();
     delete ui;
 }
 
