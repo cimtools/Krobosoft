@@ -7,14 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->startTimer(200); //Timer usado para checar se houve mudaça na lista de portas COM.
 
-    QList<QString> listaAtualPortas = serial.getListaDePortas();
+    QList<QString> listaAtualPortas = serial.getCOMList();
     ui->comboBox->clear();
     foreach( QString nome, listaAtualPortas ) ui->comboBox->addItem(nome);
 
     QObject::connect( &serial, & SerialCom::readyRead,
                      [&]{ //Função lambda chamada pelo sinal de informção no buffer de leitura.
         ui->textBrowser_2->moveCursor (QTextCursor::End);
-        ui->textBrowser_2->insertPlainText (serial.lerDados());
+        ui->textBrowser_2->insertPlainText (serial.read());
         ui->textBrowser_2->moveCursor (QTextCursor::End);
     }
     );
@@ -39,8 +39,8 @@ void MainWindow::on_comboBox_activated(const QString & arg1){ //É chamada quand
 }
 
 void MainWindow::timerEvent(QTimerEvent * a){
-    if(serial.houveMudancaPortas()){
-        QList<QString> listaAtualPortas = serial.getListaDePortas();
+    if(serial.portListChanged()){
+        QList<QString> listaAtualPortas = serial.getCOMList();
         ui->comboBox->clear();
         foreach( QString nome, listaAtualPortas ) ui->comboBox->addItem(nome);
     }
@@ -72,5 +72,4 @@ void MainWindow::on_save_button_clicked()
         ui->textBrowser_2->insertPlainText("Não foi possível salvar o arquivo");
     }
     file.close();
-
 }

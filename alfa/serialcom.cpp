@@ -1,7 +1,6 @@
 #include "serialcom.h"
 
 SerialCom::SerialCom(){
-   // QObject::connect(&portaAtual, &QSerialPort::readyRead, &SerialCom::readyRead);
     QObject::connect(&portaAtual, &QSerialPort::readyRead , this, &SerialCom::readyRead );
 
     listaDePortas = QSerialPortInfo::availablePorts();
@@ -24,8 +23,6 @@ QList<QString> SerialCom::getListaDePortas(){
     return nomesPortas;
 }
 
-//void SerialCom::readyRead(){
-//}
 
 QString SerialCom::lerDados(){
     qDebug() << "Quantidade de bytes disponíveis para leitura: " << portaAtual.bytesAvailable();
