@@ -14,6 +14,7 @@
 #include <QFileDialog>
 #include <QDir>
 #include "serialcom.h"
+#include "aclfiles.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,6 +39,7 @@ private:
     Ui::MainWindow * ui;
     int timerId =0;
     SerialCom serial;
+    aclFiles *files;
 };
 
 #endif // MAINWINDOW_H

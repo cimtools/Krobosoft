@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        aclfiles.cpp \
         main.cpp \
         mainwindow.cpp \
         serialcom.cpp
 
 HEADERS += \
+        aclfiles.h \
         mainwindow.h \
         serialcom.h
 

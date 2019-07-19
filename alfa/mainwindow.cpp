@@ -1,9 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow){
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
+
     ui->setupUi(this);
     this->startTimer(200); //Timer usado para checar se houve mudaça na lista de portas COM.
 
@@ -50,26 +49,12 @@ void MainWindow::timerEvent(QTimerEvent * a){
 
 void MainWindow::on_save_button_clicked()
 {
-    //Pega o conteúdo da caixa de texto
-    static QString program;
-    program = ui->text_edition->toPlainText();
-    //Cria File Dialog próprio
-    QFileDialog saveAs(this);
-    saveAs.setFileMode(QFileDialog::AnyFile);
-    saveAs.setNameFilter(tr("All files(*.acl*);;Text File(*.txt)"));
-    saveAs.setViewMode(QFileDialog::Detail);
-
-    QStringList filename;
-    if(saveAs.exec()){
-        filename = saveAs.selectedFiles();
-    }
-    QFile file( filename.at(0) );
-    if(file.open(QIODevice::ReadWrite)){
-        QTextStream content(&file);
-        content << program << endl;
-        ui->textBrowser_2->insertPlainText("Arquivo salvo");
+    files = new aclFiles();
+    files->setFilename();
+    if(files->saveToFile(ui->text_edition->toPlainText())){
+        ui->textEdit->setPlainText("Arquivo salvo com sucesso");
     } else {
-        ui->textBrowser_2->insertPlainText("Não foi possível salvar o arquivo");
+        ui->textEdit->setPlainText("Falha ao salvar arquivo.");
     }
-    file.close();
+    delete files;
 }
