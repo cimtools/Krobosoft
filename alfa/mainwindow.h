@@ -2,8 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSerialPort>
-#include <QSerialPortInfo>
 #include <QTableWidget>
 #include <QApplication>
 #include <QTextStream>
@@ -15,6 +13,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QDir>
+#include "serialcom.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,8 +37,7 @@ private slots:
 private:
     Ui::MainWindow * ui;
     int timerId =0;
-    QList<QSerialPortInfo> listaPortasCOM = QSerialPortInfo::availablePorts();
-    QSerialPort serial;
+    SerialCom serial;
 };
 
 #endif // MAINWINDOW_H

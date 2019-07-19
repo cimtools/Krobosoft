@@ -72,5 +72,4 @@ void MainWindow::on_save_button_clicked()
         ui->textBrowser_2->insertPlainText("Não foi possível salvar o arquivo");
     }
     file.close();
-
 }
