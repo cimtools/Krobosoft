@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(ui->lineEdit, & QLineEdit::returnPressed,
                      [&]{//Função lambda chamada quando é pressionado o return no LineEdit
-        if(serial.enviar( ui->lineEdit->text() )){
+        if(serial.send( ui->lineEdit->text() )){
             ui->lineEdit->setText("");
         }else{
             ui->lineEdit->setText("Erro ao enviar");
@@ -35,7 +35,7 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::on_comboBox_activated(const QString & arg1){ //É chamada quando seleciona um item da comboBox
-    serial.conectar( arg1 );
+    serial.connect( arg1 );
 }
 
 void MainWindow::timerEvent(QTimerEvent * a){

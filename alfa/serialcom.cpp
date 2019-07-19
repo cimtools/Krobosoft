@@ -1,59 +1,59 @@
 #include "serialcom.h"
 
 SerialCom::SerialCom(){
-    QObject::connect(&portaAtual, &QSerialPort::readyRead , this, &SerialCom::readyRead );
+    QObject::connect(&currentCOM, &QSerialPort::readyRead , this, &SerialCom::readyRead );
 
-    listaDePortas = QSerialPortInfo::availablePorts();
+    COMList = QSerialPortInfo::availablePorts();
 
-    if(!portaAtual.setBaudRate(QSerialPort::Baud9600))
-    qDebug() << portaAtual.errorString();
-    if(!portaAtual.setDataBits(QSerialPort::Data8))
-    qDebug() << portaAtual.errorString();
-    if(!portaAtual.setParity(QSerialPort::NoParity))
-    qDebug() << portaAtual.errorString();
-    if(!portaAtual.setFlowControl(QSerialPort::NoFlowControl))
-    qDebug() << portaAtual.errorString();
-    if(!portaAtual.setStopBits(QSerialPort::OneStop))
-    qDebug() << portaAtual.errorString();
+    if(!currentCOM.setBaudRate(QSerialPort::Baud9600))
+    qDebug() << currentCOM.errorString();
+    if(!currentCOM.setDataBits(QSerialPort::Data8))
+    qDebug() << currentCOM.errorString();
+    if(!currentCOM.setParity(QSerialPort::NoParity))
+    qDebug() << currentCOM.errorString();
+    if(!currentCOM.setFlowControl(QSerialPort::NoFlowControl))
+    qDebug() << currentCOM.errorString();
+    if(!currentCOM.setStopBits(QSerialPort::OneStop))
+    qDebug() << currentCOM.errorString();
 }
 
-QList<QString> SerialCom::getListaDePortas(){
-    QList<QString> nomesPortas;
-    foreach(QSerialPortInfo info, listaDePortas) nomesPortas.append(info.portName());
-    return nomesPortas;
+QList<QString> SerialCom::getCOMList(){
+    QList<QString> portNames;
+    foreach(QSerialPortInfo info, COMList) portNames.append(info.portName());
+    return portNames;
 }
 
 
-QString SerialCom::lerDados(){
-    qDebug() << "Quantidade de bytes disponíveis para leitura: " << portaAtual.bytesAvailable();
-    QString datas = portaAtual.readAll();
+QString SerialCom::read(){
+    qDebug() << "Quantidade de bytes disponíveis para leitura: " << currentCOM.bytesAvailable();
+    QString datas = currentCOM.readAll();
     qDebug() <<"Dados lidos: "<< datas;
     return datas;
 }
 
-int SerialCom::conectar(const QString & nomeDaPorta){
-    QTextStream(stdout)<<"A porta selecionada eh " << nomeDaPorta << "\n";
-    portaAtual.close();
-    portaAtual.setPortName(nomeDaPorta);
-    if(!portaAtual.open(QIODevice::ReadWrite)){
-        qDebug() << portaAtual.errorString();
+int SerialCom::connect(const QString & COMName){
+    QTextStream(stdout)<<"A porta selecionada eh " << COMName << "\n";
+    currentCOM.close();
+    currentCOM.setPortName(COMName);
+    if(!currentCOM.open(QIODevice::ReadWrite)){
+        qDebug() << currentCOM.errorString();
         return false;
     }else {
         return true;
     }
 }
 
-int SerialCom::enviar(const QString & mensagem){
+int SerialCom::send(const QString & msg){
     static QString buffer;
-    buffer = mensagem + "\r";
+    buffer = msg + "\r";
     qDebug() << "Enviando pela serial: " << buffer ;
-    return ( portaAtual.write( buffer.toStdString().c_str(), buffer.size() ) )? true : false;
+    return ( currentCOM.write( buffer.toStdString().c_str(), buffer.size() ) )? true : false;
 }
 
-bool SerialCom::houveMudancaPortas(){
-    QList<QSerialPortInfo> listaPortasMomento = QSerialPortInfo::availablePorts();
+bool SerialCom::portListChanged(){
+    QList<QSerialPortInfo> currentPortList = QSerialPortInfo::availablePorts();
     return (
-        std::equal( listaDePortas.begin(), listaDePortas.end(), listaPortasMomento.begin(),
+        std::equal( COMList.begin(), COMList.end(), currentPortList.begin(),
             []( const QSerialPortInfo & a, const QSerialPortInfo & b ){
                 return (a.portName() == b.portName())? true: false;
             }
@@ -62,5 +62,5 @@ bool SerialCom::houveMudancaPortas(){
 }
 
 SerialCom::~SerialCom(){
-    portaAtual.close();
+    currentCOM.close();
 }
