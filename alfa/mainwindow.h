@@ -28,6 +28,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void openTab(const QString name = "Novo", const QString content = nullptr);
+
 private slots:
     void on_comboBox_activated(const QString &arg1);
 
@@ -35,8 +37,11 @@ private slots:
 
     void on_save_button_clicked();
 
-
     void on_actionSalvar_Como_triggered();
+
+    void on_new_button_clicked();
+
+    void on_toolButton_clicked();
 
 private:
     Ui::MainWindow * ui;

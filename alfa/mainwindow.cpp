@@ -6,6 +6,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     this->startTimer(200); //Timer usado para checar se houve mudaça na lista de portas COM.
 
+    openTab();
+
+
     QList<QString> listaAtualPortas = serial->getCOMList();
     ui->comboBox->clear();
     foreach( QString nome, listaAtualPortas ) ui->comboBox->addItem(nome);
@@ -51,11 +54,11 @@ void MainWindow::on_save_button_clicked()
 {
     files = new aclFiles();
     files->setFilename();
-    if(files->saveToFile(ui->text_edition->toPlainText())){
+    /*if(files->saveToFile(ui->text_edition->toPlainText())){
         ui->textEdit->setPlainText("Arquivo salvo com sucesso");
     } else {
         ui->textEdit->setPlainText("Falha ao salvar arquivo.");
-    }
+    }*/
     delete files;
 }
 
@@ -63,3 +66,26 @@ void MainWindow::on_actionSalvar_Como_triggered()
 {
     on_save_button_clicked();
 }
+
+void MainWindow::on_new_button_clicked()
+{
+    openTab();
+}
+
+void MainWindow::on_toolButton_clicked()
+{
+    files = new aclFiles();
+    files->setFilename();
+    openTab(files->getFilename(), files->openFile());
+}
+
+//####################################################################### FUNCTIONS
+void MainWindow::openTab(const QString name, QString content){
+    int i = ui->tabWidget->currentIndex() +1;
+    QTextEdit * temp = new QTextEdit();
+    temp->setPlainText(content);
+    ui->tabWidget->insertTab(i, temp, name);
+    ui->tabWidget->widget(i)->setStyleSheet("background-color: rgb(255, 255, 255); \n color: rgb(0, 0, 0); \n");
+    temp = nullptr;
+}
+

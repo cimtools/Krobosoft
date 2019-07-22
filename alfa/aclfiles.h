@@ -7,12 +7,14 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QTextStream>
+#include <QFileInfo>
 class aclFiles
 {
 private:
 
     QStringList filenames;
     QString filename;
+    QString filePath;
     QFileDialog *fileDialog;
     QFile *file;
 public:
@@ -35,6 +37,11 @@ public:
      */
     QString getFilename();
     /**
+     * @brief getFilePath
+     * @return
+     */
+    QString getFilePath();
+    /**
     * @brief Save content of QString into the file pointed by filename.
     * @param content QString The content of the text-edit object to be saved.
     * @return bool Confirms if the saving has occurrely succesfully.
@@ -44,7 +51,7 @@ public:
      * @brief openFile Open a file and show it at a text-edit tab
      * @return bool Confirms if the file has been opened.
      */
-    bool openFile();
+    QString openFile();
     /**
      * @brief openFiles Open multiples files, each one in a differently text-edit tab.
      * @return bool Confirms if all the files opened correctly.

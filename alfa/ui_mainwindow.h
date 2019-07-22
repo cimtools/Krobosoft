@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.4
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -20,6 +20,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
@@ -29,13 +30,18 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionNovo;
+    QAction *actionAbrir;
+    QAction *actionSalvar_Como;
+    QAction *actionSalvar;
     QWidget *centralWidget;
     QGroupBox *groupBox;
-    QTextEdit *text_edition;
     QToolButton *new_button;
     QToolButton *save_button;
     QToolButton *download_button;
     QToolButton *list_button;
+    QTabWidget *tabWidget;
+    QToolButton *toolButton;
     QGroupBox *groupBox_3;
     QToolButton *toolButton_9;
     QToolButton *toolButton_10;
@@ -70,38 +76,47 @@ public:
         MainWindow->setAutoFillBackground(false);
         MainWindow->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(85, 87, 83);"));
+        actionNovo = new QAction(MainWindow);
+        actionNovo->setObjectName(QString::fromUtf8("actionNovo"));
+        actionAbrir = new QAction(MainWindow);
+        actionAbrir->setObjectName(QString::fromUtf8("actionAbrir"));
+        actionSalvar_Como = new QAction(MainWindow);
+        actionSalvar_Como->setObjectName(QString::fromUtf8("actionSalvar_Como"));
+        actionSalvar = new QAction(MainWindow);
+        actionSalvar->setObjectName(QString::fromUtf8("actionSalvar"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(478, 9, 463, 291));
+        groupBox->setGeometry(QRect(480, 9, 461, 291));
         sizePolicy.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
         groupBox->setSizePolicy(sizePolicy);
         groupBox->setMinimumSize(QSize(123, 123));
         groupBox->setStyleSheet(QString::fromUtf8("background-color: rgb(186, 189, 182);"));
-        text_edition = new QTextEdit(groupBox);
-        text_edition->setObjectName(QString::fromUtf8("text_edition"));
-        text_edition->setGeometry(QRect(40, 20, 421, 251));
-        text_edition->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);\n"
-"color: rgb(0, 0, 0);\n"
-""));
-        text_edition->setReadOnly(false);
         new_button = new QToolButton(groupBox);
         new_button->setObjectName(QString::fromUtf8("new_button"));
         new_button->setGeometry(QRect(10, 30, 26, 24));
         new_button->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         save_button = new QToolButton(groupBox);
         save_button->setObjectName(QString::fromUtf8("save_button"));
-        save_button->setGeometry(QRect(10, 60, 26, 24));
+        save_button->setGeometry(QRect(10, 90, 26, 24));
         save_button->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         download_button = new QToolButton(groupBox);
         download_button->setObjectName(QString::fromUtf8("download_button"));
-        download_button->setGeometry(QRect(10, 90, 26, 24));
+        download_button->setGeometry(QRect(10, 120, 26, 24));
         download_button->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         list_button = new QToolButton(groupBox);
         list_button->setObjectName(QString::fromUtf8("list_button"));
-        list_button->setGeometry(QRect(10, 120, 26, 24));
+        list_button->setGeometry(QRect(10, 150, 26, 24));
         list_button->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        tabWidget = new QTabWidget(groupBox);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setGeometry(QRect(40, 20, 421, 271));
+        toolButton = new QToolButton(groupBox);
+        toolButton->setObjectName(QString::fromUtf8("toolButton"));
+        toolButton->setGeometry(QRect(10, 60, 28, 22));
+        toolButton->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+""));
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setGeometry(QRect(9, 9, 463, 291));
@@ -184,40 +199,53 @@ public:
         menuBar->addAction(menuConfigura_es->menuAction());
         menuBar->addAction(menuBot_es_de_Controle->menuAction());
         menuBar->addAction(menuHelp->menuAction());
+        menuLabBot->addAction(actionNovo);
+        menuLabBot->addAction(actionAbrir);
+        menuLabBot->addAction(actionSalvar);
+        menuLabBot->addAction(actionSalvar_Como);
 
         retranslateUi(MainWindow);
+        QObject::connect(actionSalvar_Como, SIGNAL(triggered()), save_button, SLOT(click()));
+
+        tabWidget->setCurrentIndex(-1);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        groupBox->setTitle(QApplication::translate("MainWindow", "                                                 Editor de Programas", nullptr));
-        new_button->setText(QApplication::translate("MainWindow", "new", nullptr));
-        save_button->setText(QApplication::translate("MainWindow", "sv", nullptr));
-        download_button->setText(QApplication::translate("MainWindow", "d", nullptr));
-        list_button->setText(QApplication::translate("MainWindow", "L", nullptr));
-        groupBox_3->setTitle(QApplication::translate("MainWindow", "                               Terminal do Controlador TIPO B", nullptr));
-        toolButton_9->setText(QApplication::translate("MainWindow", "C", nullptr));
-        toolButton_10->setText(QApplication::translate("MainWindow", "D", nullptr));
-        toolButton_11->setText(QApplication::translate("MainWindow", "U", nullptr));
-        toolButton_12->setText(QApplication::translate("MainWindow", "L", nullptr));
-#ifndef QT_NO_TOOLTIP
-        textBrowser_2->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#ce5c00;\">ni</span></p></body></html>", nullptr));
-#endif // QT_NO_TOOLTIP
-        textBrowser_2->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionNovo->setText(QCoreApplication::translate("MainWindow", "Novo", nullptr));
+        actionAbrir->setText(QCoreApplication::translate("MainWindow", "Abrir", nullptr));
+        actionSalvar_Como->setText(QCoreApplication::translate("MainWindow", "Salvar Como", nullptr));
+        actionSalvar->setText(QCoreApplication::translate("MainWindow", "Salvar", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("MainWindow", "                                                 Editor de Programas", nullptr));
+        new_button->setText(QCoreApplication::translate("MainWindow", "new", nullptr));
+        save_button->setText(QCoreApplication::translate("MainWindow", "sv", nullptr));
+        download_button->setText(QCoreApplication::translate("MainWindow", "d", nullptr));
+        list_button->setText(QCoreApplication::translate("MainWindow", "L", nullptr));
+        toolButton->setText(QCoreApplication::translate("MainWindow", "Abrir", nullptr));
+        groupBox_3->setTitle(QCoreApplication::translate("MainWindow", "                               Terminal do Controlador TIPO B", nullptr));
+        toolButton_9->setText(QCoreApplication::translate("MainWindow", "C", nullptr));
+        toolButton_10->setText(QCoreApplication::translate("MainWindow", "D", nullptr));
+        toolButton_11->setText(QCoreApplication::translate("MainWindow", "U", nullptr));
+        toolButton_12->setText(QCoreApplication::translate("MainWindow", "L", nullptr));
+#if QT_CONFIG(tooltip)
+        textBrowser_2->setToolTip(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#ce5c00;\">ni</span></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
+        textBrowser_2->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:italic;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt;\"><br /></p></body></html>", nullptr));
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "Controle do Download", nullptr));
-        menuLabBot->setTitle(QApplication::translate("MainWindow", "Arquivo", nullptr));
-        menuFerramentas->setTitle(QApplication::translate("MainWindow", "Ferramentas", nullptr));
-        menuConfigura_es->setTitle(QApplication::translate("MainWindow", "Configura\303\247\303\265es", nullptr));
-        menuBot_es_de_Controle->setTitle(QApplication::translate("MainWindow", "Bot\303\265es de Controle", nullptr));
-        menuHelp->setTitle(QApplication::translate("MainWindow", "Help", nullptr));
+        groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "Controle do Download", nullptr));
+        menuLabBot->setTitle(QCoreApplication::translate("MainWindow", "Arquivo", nullptr));
+        menuFerramentas->setTitle(QCoreApplication::translate("MainWindow", "Ferramentas", nullptr));
+        menuConfigura_es->setTitle(QCoreApplication::translate("MainWindow", "Configura\303\247\303\265es", nullptr));
+        menuBot_es_de_Controle->setTitle(QCoreApplication::translate("MainWindow", "Bot\303\265es de Controle", nullptr));
+        menuHelp->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));
     } // retranslateUi
 
 };
