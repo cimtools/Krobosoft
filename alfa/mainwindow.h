@@ -38,7 +38,7 @@ private slots:
 private:
     Ui::MainWindow * ui;
     int timerId =0;
-    SerialCom serial;
+    SerialCom * serial;
     aclFiles *files;
 };
 
