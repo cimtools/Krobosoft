@@ -58,3 +58,8 @@ void MainWindow::on_save_button_clicked()
     }
     delete files;
 }
+
+void MainWindow::on_actionSalvar_Como_triggered()
+{
+    on_save_button_clicked();
+}
