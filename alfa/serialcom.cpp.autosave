@@ -27,7 +27,6 @@ QList<QString> SerialCom::getCOMList(){
 
 
 QString SerialCom::read(){
-    qDebug() << "Quantidade de bytes disponíveis para leitura: " << currentCOM.bytesAvailable();
     QString datas = currentCOM.readAll();
     qDebug() <<"Dados lidos: "<< datas;
     return datas;
