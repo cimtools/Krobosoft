@@ -66,24 +66,6 @@ background-color: rgb(85, 87, 83);</string>
     <property name="title">
      <string>                                                 Editor de Programas</string>
     </property>
-    <widget class="QTextEdit" name="text_edition">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>20</y>
-       <width>421</width>
-       <height>251</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(238, 238, 236);
-color: rgb(0, 0, 0);
-</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-    </widget>
     <widget class="QToolButton" name="new_button">
      <property name="geometry">
       <rect>
@@ -104,7 +86,7 @@ color: rgb(0, 0, 0);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>60</y>
+       <y>90</y>
        <width>26</width>
        <height>24</height>
       </rect>
@@ -120,7 +102,7 @@ color: rgb(0, 0, 0);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>90</y>
+       <y>120</y>
        <width>26</width>
        <height>24</height>
       </rect>
@@ -136,7 +118,7 @@ color: rgb(0, 0, 0);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>120</y>
+       <y>150</y>
        <width>26</width>
        <height>24</height>
       </rect>
@@ -146,6 +128,36 @@ color: rgb(0, 0, 0);
      </property>
      <property name="text">
       <string>L</string>
+     </property>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>421</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>-1</number>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>28</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);
+</string>
+     </property>
+     <property name="text">
+      <string>Abrir</string>
      </property>
     </widget>
    </widget>
@@ -431,5 +443,22 @@ color: rgb(78, 154, 6)</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionSalvar_Como</sender>
+   <signal>triggered()</signal>
+   <receiver>save_button</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>502</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
