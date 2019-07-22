@@ -1,19 +1,21 @@
 #include "serialcom.h"
 
-SerialCom::SerialCom(){
+SerialCom::SerialCom( qint32 baudRate , QSerialPort::DataBits dataBytes ,
+                      QSerialPort::Parity parity , QSerialPort::FlowControl flowControl ,
+                      QSerialPort::StopBits stopBit ){
     QObject::connect(&currentCOM, &QSerialPort::readyRead , this, &SerialCom::readyRead );
 
     COMList = QSerialPortInfo::availablePorts();
 
-    if(!currentCOM.setBaudRate(QSerialPort::Baud9600))
+    if(!currentCOM.setBaudRate(baudRate))
     qDebug() << currentCOM.errorString();
-    if(!currentCOM.setDataBits(QSerialPort::Data8))
+    if(!currentCOM.setDataBits(dataBytes))
     qDebug() << currentCOM.errorString();
-    if(!currentCOM.setParity(QSerialPort::NoParity))
+    if(!currentCOM.setParity(parity))
     qDebug() << currentCOM.errorString();
-    if(!currentCOM.setFlowControl(QSerialPort::NoFlowControl))
+    if(!currentCOM.setFlowControl(flowControl))
     qDebug() << currentCOM.errorString();
-    if(!currentCOM.setStopBits(QSerialPort::OneStop))
+    if(!currentCOM.setStopBits(stopBit))
     qDebug() << currentCOM.errorString();
 }
 
@@ -25,13 +27,12 @@ QList<QString> SerialCom::getCOMList(){
 
 
 QString SerialCom::read(){
-    qDebug() << "Quantidade de bytes disponíveis para leitura: " << currentCOM.bytesAvailable();
     QString datas = currentCOM.readAll();
     qDebug() <<"Dados lidos: "<< datas;
     return datas;
 }
 
-int SerialCom::connect(const QString & COMName){
+bool SerialCom::connect(const QString & COMName){
     QTextStream(stdout)<<"A porta selecionada eh " << COMName << "\n";
     currentCOM.close();
     currentCOM.setPortName(COMName);
@@ -44,10 +45,9 @@ int SerialCom::connect(const QString & COMName){
 }
 
 int SerialCom::send(const QString & msg){
-    static QString buffer;
-    buffer = msg + "\r";
+    static QString buffer = msg + '\r';
     qDebug() << "Enviando pela serial: " << buffer ;
-    return ( currentCOM.write( buffer.toStdString().c_str(), buffer.size() ) )? true : false;
+    return ( currentCOM.write( buffer.toStdString().c_str(), buffer.size()) )? true : false;
 }
 
 bool SerialCom::portListChanged(){
