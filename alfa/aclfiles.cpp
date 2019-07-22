@@ -8,6 +8,10 @@ aclFiles::aclFiles()
     fileDialog->setViewMode(QFileDialog::Detail);
 }
 
+
+aclFiles::~aclFiles(){
+
+}
 void aclFiles::setFilename(){
     if(fileDialog->exec()){
         filenames = fileDialog->selectedFiles();

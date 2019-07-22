@@ -35,6 +35,9 @@ private slots:
 
     void on_save_button_clicked();
 
+
+    void on_actionSalvar_Como_triggered();
+
 private:
     Ui::MainWindow * ui;
     int timerId =0;

@@ -42,9 +42,9 @@ background-color: rgb(85, 87, 83);</string>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>478</x>
+      <x>480</x>
       <y>9</y>
-      <width>463</width>
+      <width>461</width>
       <height>291</height>
      </rect>
     </property>
@@ -377,6 +377,10 @@ color: rgb(78, 154, 6)</string>
     <property name="title">
      <string>Arquivo</string>
     </property>
+    <addaction name="actionNovo"/>
+    <addaction name="actionAbrir"/>
+    <addaction name="actionSalvar"/>
+    <addaction name="actionSalvar_Como"/>
    </widget>
    <widget class="QMenu" name="menuFerramentas">
     <property name="title">
@@ -404,6 +408,26 @@ color: rgb(78, 154, 6)</string>
    <addaction name="menuBot_es_de_Controle"/>
    <addaction name="menuHelp"/>
   </widget>
+  <action name="actionNovo">
+   <property name="text">
+    <string>Novo</string>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+  </action>
+  <action name="actionSalvar_Como">
+   <property name="text">
+    <string>Salvar Como</string>
+   </property>
+  </action>
+  <action name="actionSalvar">
+   <property name="text">
+    <string>Salvar</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
