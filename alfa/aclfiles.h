@@ -10,6 +10,7 @@
 class aclFiles
 {
 private:
+
     QStringList filenames;
     QString filename;
     QFileDialog *fileDialog;
@@ -18,6 +19,11 @@ public:
     aclFiles();
     void setFilename();
     QString getFilename();
+    /**
+    * @brief Save content of QString into the file pointed by filename
+    * @param content QString The content of the text-edit object to be saved
+    * @return bool Confirms if the saving has occurrely succesfully
+    */
     bool saveToFile(QString content);
     bool openFile();
     bool openFiles();
