@@ -5,6 +5,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QTextEdit>
+#include <QLineEdit>
 
 class SerialTerminal: public QTextEdit
 {

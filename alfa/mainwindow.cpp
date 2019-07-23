@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), serial(new SerialCom){
 
@@ -31,6 +32,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             ui->lineEdit->setText("Erro ao enviar");
         }
     }
+    );
+
+    QObject::connect( terminal, & QLineEdit::returnPressed,
+                     [&]{//Função lambda chamada quando é pressionado o return no LineEdit
+                            QDebug() << "pressionado enter\n";
+                        }
     );
 }
 

@@ -1,5 +1,9 @@
 #include "serialcom.h"
 
+SerialTerminal::SerialTerminal(){
+    setStyleSheet("background-color: rgb(0, 0, 0)");
+}
+
 SerialCom::SerialCom( qint32 baudRate , QSerialPort::DataBits dataBytes ,
                       QSerialPort::Parity parity , QSerialPort::FlowControl flowControl ,
                       QSerialPort::StopBits stopBit ){
