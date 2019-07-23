@@ -4,6 +4,22 @@
 #include <QQuickItem>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QTextEdit>
+
+class SerialTerminal: public QTextEdit
+{
+    Q_OBJECT
+public:
+    SerialTerminal();
+    void keyPressEvent(QKeyEvent *e){
+        if( e->key()==Qt::Key_Return || e->key()==Qt::Key_Enter ){
+            qDebug() << "Ok";
+        }
+        QTextEdit::keyPressEvent(e);
+    }
+protected:
+    QString comando;
+};
 
 class SerialCom : public QQuickItem
 {

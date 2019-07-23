@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     openTab();
 
+    SerialTerminal * terminal = new SerialTerminal();
+    ui->terminalLayout->addWidget(terminal);
 
     QList<QString> listaAtualPortas = serial->getCOMList();
     ui->comboBox->clear();
