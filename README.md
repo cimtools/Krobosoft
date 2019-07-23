@@ -1,7 +1,7 @@
 # new_labcim_labBot
 
 New programming interface software to use with Intellitek robots compatible with ACL language.
-It is a frontend to the robot controle via serial comunication and simulation trought the
+It is a frontend to the robot controler via serial comunication and simulation trought the
 [ACLC](https://github.com/cimtools/aclc) simulator.
 
 # Install (on ubuntu Linux)
