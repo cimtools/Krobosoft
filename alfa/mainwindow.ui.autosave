@@ -246,7 +246,7 @@ background-color: rgb(46, 52, 54);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">background-color: rgb(46, 52, 54);</string>
      </property>
      <property name="text">
       <string>U</string>
@@ -266,7 +266,7 @@ background-color: rgb(46, 52, 54);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">background-color: rgb(46, 52, 54);</string>
      </property>
      <property name="text">
       <string>L</string>
