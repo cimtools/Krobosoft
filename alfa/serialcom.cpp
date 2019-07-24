@@ -10,7 +10,7 @@ void SerialTerminal::keyPressEvent( QKeyEvent * e ){
     case Qt::Key_Return:
     case Qt::Key_Enter:
         //emit emitDataReady(command);
-        //command = "";
+        command = "";
         emit emitByteReady('\n');
         ensureCursorVisible();
         break;
@@ -22,7 +22,7 @@ void SerialTerminal::keyPressEvent( QKeyEvent * e ){
         }
         return;
     default:
-        //command += e->text();
+        command += e->text();
         if(e->text().toStdString().size()>0)
         emit emitByteReady( e->text().toStdString().at(0) );
         //insertPlainText(e->text()); //Coment this line to stop echo on terminal.
