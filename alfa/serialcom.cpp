@@ -2,12 +2,36 @@
 
 SerialTerminal::SerialTerminal(){
     setStyleSheet("background-color: rgb(0, 0, 0); color: rgb(78,154,6)");
+    setReadOnly(true);
+    insertPlainText(">");
 }
 
 void SerialTerminal::keyPressEvent( QKeyEvent * e ){
-    if( e->key()==Qt::Key_Return || e->key()==Qt::Key_Enter ){
-        emit emitDataReady("enter pressionado\n");
+    switch (e->key()) {
+    case Qt::Key_Return:
+    case Qt::Key_Enter:
+        emit emitDataReady(command);
+        command = "";
+        insertPlainText(e->text()+">");
+        ensureCursorVisible();
+        break;
+    case Qt::Key_Backspace:
+    case Qt::Key_Delete:
+        //qDebug() << "cursor position: " << textCursor().positionInBlock();
+
+        //insertPlainText("\b");
+        if(command.size()>0){
+            textCursor().deletePreviousChar();
+            command.chop(1);
+        }
+        return;
+        break;
+    default:
+        command += e->text();
+        insertPlainText(e->text());
+        break;
     }
+    qDebug() << command;
     QTextEdit::keyPressEvent( e );
 }
 

@@ -35,6 +35,15 @@ protected:
      * @brief QString that holds the command typed.
      */
     QString command;
+    /**
+     * @brief true if the user is able to write text, false if the terminal is waiting for the COM port to finish.
+     */
+    bool writingEnable=true;
+    /**
+     * @brief Holds the last edition position. When the user presses a key is treated as if the cursor is in this position.
+     * This is set eatch time the writing capability is enable, and when the user presses arrow keys.
+     */
+    int lastEditPosition;
 };
 
 class SerialCom : public QQuickItem
