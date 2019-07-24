@@ -3,36 +3,31 @@
 SerialTerminal::SerialTerminal(){
     setStyleSheet("background-color: rgb(0, 0, 0); color: rgb(78,154,6)");
     setReadOnly(true);
-    insertPlainText(">");
 }
 
 void SerialTerminal::keyPressEvent( QKeyEvent * e ){
     switch (e->key()) {
     case Qt::Key_Return:
     case Qt::Key_Enter:
-        emit emitDataReady(command);
-        command = "";
-        insertPlainText(e->text()+">");
+        //emit emitDataReady(command);
+        //command = "";
+        emit emitByteReady('\n');
         ensureCursorVisible();
         break;
     case Qt::Key_Backspace:
     case Qt::Key_Delete:
-        //qDebug() << "cursor position: " << textCursor().positionInBlock();
-
-        //insertPlainText("\b");
         if(command.size()>0){
             textCursor().deletePreviousChar();
             command.chop(1);
         }
         return;
-        break;
     default:
-        command += e->text();
-        insertPlainText(e->text());
+        //command += e->text();
+        if(e->text().toStdString().size()>0)
+        emit emitByteReady( e->text().toStdString().at(0) );
+        //insertPlainText(e->text()); //Coment this line to stop echo on terminal.
         break;
     }
-    qDebug() << command;
-    QTextEdit::keyPressEvent( e );
 }
 
 SerialCom::SerialCom( qint32 baudRate , QSerialPort::DataBits dataBytes ,
@@ -59,7 +54,9 @@ QList<QString> SerialCom::getCOMList(){
     foreach(QSerialPortInfo info, COMList) portNames.append(info.portName());
     return portNames;
 }
-
+void SerialCom::close(){
+    currentCOM.close();
+}
 
 QString SerialCom::read(){
     QString datas = currentCOM.readAll();
@@ -80,20 +77,32 @@ bool SerialCom::connect(const QString & COMName){
 }
 
 int SerialCom::send(const QString & msg){
-    static QString buffer = msg + '\r';
+    QString buffer = msg + '\r';
     qDebug() << "Enviando pela serial: " << buffer ;
     return ( currentCOM.write( buffer.toStdString().c_str(), buffer.size()) )? true : false;
 }
 
+int SerialCom::sendByte(const char & byte){
+    qDebug() << "Enviando pela serial: " << byte ;
+    char a = byte;
+    return ( currentCOM.write( &a ) )? true : false;
+}
+
+
 bool SerialCom::portListChanged(){
     QList<QSerialPortInfo> currentPortList = QSerialPortInfo::availablePorts();
-    return (
+    if(
         std::equal( COMList.begin(), COMList.end(), currentPortList.begin(),
             []( const QSerialPortInfo & a, const QSerialPortInfo & b ){
                 return (a.portName() == b.portName())? true: false;
             }
         )
-   )? false: true;
+    ){
+        return false;
+    }else{
+        COMList = currentPortList;
+        return true;
+    }
 }
 
 SerialCom::~SerialCom(){

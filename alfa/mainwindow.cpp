@@ -18,8 +18,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     foreach( QString nome, listaAtualPortas ) ui->comboBox->addItem(nome);
 
     QObject::connect( serial, &SerialCom::readyRead, [=](){ terminal->insertPlainText( serial->read() ); } );
-    QObject::connect( terminal, &SerialTerminal::emitDataReady, serial, &SerialCom::send );
-
+    //QObject::connect( terminal, &SerialTerminal::emitDataReady, serial, &SerialCom::send );
+    QObject::connect( terminal, &SerialTerminal::emitByteReady, serial, &SerialCom::sendByte );
 
 }
 
@@ -28,6 +28,7 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::on_comboBox_activated(const QString & arg1){ //É chamada quando seleciona um item da comboBox
+    serial->close();
     serial->connect( arg1 );
 }
 

@@ -13,9 +13,14 @@ class SerialTerminal: public QTextEdit
 signals:
     /**
      * @brief Signal emitted when user press Enter or Return.
-     * @param The String that is to be sent out of the terminal.
+     * @param data The String that is to be sent out of the terminal.
      */
-    void emitDataReady( const QString data );
+    void emitDataReady( const QString & data );
+    /**
+     * @brief Sgnal emitted user press a single key.
+     * @param byte byte to be sent.
+     */
+    void emitByteReady( const char & byte );
 public:
     /**
      * @brief Sets the color of the terminal.
@@ -38,7 +43,7 @@ protected:
     /**
      * @brief true if the user is able to write text, false if the terminal is waiting for the COM port to finish.
      */
-    bool writingEnable=true;
+    bool writingEnable=true;//TODO
     /**
      * @brief Holds the last edition position. When the user presses a key is treated as if the cursor is in this position.
      * This is set eatch time the writing capability is enable, and when the user presses arrow keys.
@@ -64,22 +69,32 @@ public:
      */
     QList<QString> getCOMList();
     /**
+     * @brief Closes the COM port.
+     */
+    void close();
+    /**
      * @brief Reads all available data on the current COM port.
      * @return Return COM buffer data.
      */
     QString read();
     /**
      * @brief Used to open communication with a COM port.
-     * @param Qstring that contain the name of the desired COM port.
+     * @param COMName Qstring that contain the name of the desired COM port.
      * @return Returns true if it succeeds in establish the connection, false otherwise.
      */
     bool connect( const QString & COMName);
     /**
      * @brief Sends a QString to the open COM port.
-     * @param The QString to be sent.
+     * @param msg The QString to be sent.
      * @return Returns true if it succeeds is sending the message, false otherwise.
      */
     int send( const QString & msg);
+    /**
+     * @brief sendByte
+     * @param byte Byte to be sent.
+     * @return
+     */
+    int sendByte( const char & byte);
     /**
      * @brief Function used to know if changes in the list of COM ports occurred.
      * @return Returns true if COM ports were added or subtracted, false otherwise.
