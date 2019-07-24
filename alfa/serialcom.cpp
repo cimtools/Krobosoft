@@ -1,7 +1,14 @@
 #include "serialcom.h"
 
 SerialTerminal::SerialTerminal(){
-    setStyleSheet("background-color: rgb(0, 0, 0)");
+    setStyleSheet("background-color: rgb(0, 0, 0); color: rgb(78,154,6)");
+}
+
+void SerialTerminal::keyPressEvent( QKeyEvent * e ){
+    if( e->key()==Qt::Key_Return || e->key()==Qt::Key_Enter ){
+        emit emitDataReady("enter pressionado\n");
+    }
+    QTextEdit::keyPressEvent( e );
 }
 
 SerialCom::SerialCom( qint32 baudRate , QSerialPort::DataBits dataBytes ,

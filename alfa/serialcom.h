@@ -10,16 +10,31 @@
 class SerialTerminal: public QTextEdit
 {
     Q_OBJECT
+signals:
+    /**
+     * @brief Signal emitted when user press Enter or Return.
+     * @param The String that is to be sent out of the terminal.
+     */
+    void emitDataReady( const QString data );
 public:
+    /**
+     * @brief Sets the color of the terminal.
+     */
     SerialTerminal();
-    void keyPressEvent(QKeyEvent *e){
-        if( e->key()==Qt::Key_Return || e->key()==Qt::Key_Enter ){
-            qDebug() << "Ok";
-        }
-        QTextEdit::keyPressEvent(e);
-    }
+    /**
+     * @brief Used to return the string to be sent to the serial Port.
+     * @return Qstring String to be sent out of the terminal.
+     */
+    QString getCommand(){ return command; }
 protected:
-    QString comando;
+    /**
+     * @brief Override function, that listens for Enter or Return presses.
+     */
+    void keyPressEvent( QKeyEvent * e ) override;
+    /**
+     * @brief QString that holds the command typed.
+     */
+    QString command;
 };
 
 class SerialCom : public QQuickItem
