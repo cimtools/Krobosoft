@@ -13,6 +13,7 @@ class aclFiles
 private:
 
     QStringList filenames;
+    QStringList filePaths;
     QString filename;
     QString filePath;
     QFileDialog *fileDialog;
@@ -30,17 +31,31 @@ public:
     /**
      * @brief setFilename open a pop-up windows to select a file. The name is stored at filename.
      */
-    void setFilename();
+    void setFilename(bool type=0);
     /**
      * @brief getFilename Returns the name of the file stored at filename.
      * @return QString The content of the attribute filename.
      */
     QString getFilename();
     /**
+     * @brief getFilename
+     * @param filepath
+     * @return
+     */
+    QString getFilename(QString filepath);
+    /**
+     * @brief getFilenames
+     * @return
+     */
+    QStringList getFilenames();
+    /**
      * @brief getFilePath
      * @return
      */
+
     QString getFilePath();
+
+    QStringList getFilePaths();
     /**
     * @brief Save content of QString into the file pointed by filename.
     * @param content QString The content of the text-edit object to be saved.
@@ -51,7 +66,7 @@ public:
      * @brief openFile Open a file and show it at a text-edit tab
      * @return bool Confirms if the file has been opened.
      */
-    QString openFile();
+    QString openFile(QString filepath);
     /**
      * @brief openFiles Open multiples files, each one in a differently text-edit tab.
      * @return bool Confirms if all the files opened correctly.

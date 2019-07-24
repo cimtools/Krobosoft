@@ -44,12 +44,14 @@ void MainWindow::timerEvent(QTimerEvent * a){
 void MainWindow::on_save_button_clicked()
 {
     files = new aclFiles();
-    files->setFilename();
-    /*if(files->saveToFile(ui->text_edition->toPlainText())){
+    files->setFilename(1);
+    QTextEdit * temp = (QTextEdit *) ui->tabWidget->currentWidget();
+
+    if(files->saveToFile(temp->toPlainText())){
         ui->textEdit->setPlainText("Arquivo salvo com sucesso");
     } else {
         ui->textEdit->setPlainText("Falha ao salvar arquivo.");
-    }*/
+    }
     delete files;
 }
 
@@ -63,11 +65,15 @@ void MainWindow::on_new_button_clicked()
     openTab();
 }
 
-void MainWindow::on_toolButton_clicked()
+void MainWindow::on_openButton_clicked()
 {
     files = new aclFiles();
-    files->setFilename();
-    openTab(files->getFilename(), files->openFile());
+    files->setFilename(0);
+    foreach(QString filepath, files->getFilePaths()){
+        qDebug() << filepath;
+        openTab(files->getFilename(filepath), files->openFile(filepath));
+    }
+
 }
 
 //####################################################################### FUNCTIONS
@@ -78,5 +84,15 @@ void MainWindow::openTab(const QString name, QString content){
     ui->tabWidget->insertTab(i, temp, name);
     ui->tabWidget->widget(i)->setStyleSheet("background-color: rgb(255, 255, 255); \n color: rgb(0, 0, 0); \n");
     temp = nullptr;
+}
+
+void MainWindow::on_actionAbrir_triggered()
+{
+    on_openButton_clicked();
+}
+
+void MainWindow::on_actionNovo_triggered()
+{
+    openTab();
 }
 

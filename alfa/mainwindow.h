@@ -43,6 +43,12 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void on_actionAbrir_triggered();
+
+    void on_actionNovo_triggered();
+
+    void on_openButton_clicked();
+
 private:
     Ui::MainWindow * ui;
     int timerId =0;
