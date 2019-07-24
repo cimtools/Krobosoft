@@ -5,40 +5,21 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), serial(new SerialCom){
 
     ui->setupUi(this);
+    SerialTerminal * terminal = new SerialTerminal();
+    ui->terminalLayout->addWidget( terminal );
+
     this->startTimer(200); //Timer usado para checar se houve mudaça na lista de portas COM.
 
     openTab();
-
-    SerialTerminal * terminal = new SerialTerminal();
-    ui->terminalLayout->addWidget(terminal);
 
     QList<QString> listaAtualPortas = serial->getCOMList();
     ui->comboBox->clear();
     foreach( QString nome, listaAtualPortas ) ui->comboBox->addItem(nome);
 
-    QObject::connect( serial, & SerialCom::readyRead,
-                     [&]{ //Função lambda chamada pelo sinal de informção no buffer de leitura.
-        ui->textBrowser_2->moveCursor (QTextCursor::End);
-        ui->textBrowser_2->insertPlainText (serial->read());
-        ui->textBrowser_2->moveCursor (QTextCursor::End);
-    }
-    );
+    QObject::connect( serial, &SerialCom::readyRead, [=](){ terminal->insertPlainText( serial->read() ); } );
+    QObject::connect( terminal, &SerialTerminal::emitDataReady, serial, &SerialCom::send );
 
-    QObject::connect(ui->lineEdit, & QLineEdit::returnPressed,
-                     [&]{//Função lambda chamada quando é pressionado o return no LineEdit
-        if(serial->send( ui->lineEdit->text() )){
-            ui->lineEdit->setText("");
-        }else{
-            ui->lineEdit->setText("Erro ao enviar");
-        }
-    }
-    );
 
-    QObject::connect( terminal, & QLineEdit::returnPressed,
-                     [&]{//Função lambda chamada quando é pressionado o return no LineEdit
-                            QDebug() << "pressionado enter\n";
-                        }
-    );
 }
 
 MainWindow::~MainWindow(){
