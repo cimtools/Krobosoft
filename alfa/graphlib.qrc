@@ -1,0 +1,36 @@
+<!DOCTYPE RCC><RCC>
+<qresource>
+  <file>icons/aclfiles.bmp</file>
+  <file>icons/Avanco.bmp</file>
+  <file>icons/back.png</file>
+  <file>icons/down.bmp</file>
+  <file>icons/filefind.bmp</file>
+  <file>icons/filesave.bmp</file>
+  <file>icons/flecha.bmp</file>
+  <file>icons/folder_open.bmp</file>
+  <file>icons/folder_txt.bmp</file>
+  <file>icons/forward.png</file>
+  <file>icons/gohome.bmp</file>
+  <file>icons/history.bmp</file>
+  <file>icons/history.png</file>
+  <file>icons/kconsole.ico</file>
+  <file>icons/konsole.bmp</file>
+  <file>icons/listp.bmp</file>
+  <file>icons/logs.bmp</file>
+  <file>icons/maisum.bmp</file>
+  <file>icons/mime_empty.bmp</file>
+  <file>icons/mundo.bmp</file>
+  <file>icons/play.bmp</file>
+  <file>icons/queue.bmp</file>
+  <file>icons/queue.PNG</file>
+  <file>icons/rede.bmp</file>
+  <file>icons/shellscript.png</file>
+  <file>icons/SplashScreen4</file>
+  <file>icons/SplashScreen4.bmp</file>
+  <file>icons/SplashScreen.bmp</file>
+  <file>icons/stop.bmp</file>
+  <file>icons/Thumbs.db</file>
+  <file>icons/up.bmp</file>
+  <file>icons/Volta.bmp</file>
+</qresource>
+</RCC>
