@@ -10,7 +10,7 @@ void SerialTerminal::keyPressEvent( QKeyEvent * e ){
     case Qt::Key_Return:
     case Qt::Key_Enter:
         //emit emitDataReady(command);
-        command = "";
+        //command = "";
         emit emitByteReady('\n');
         ensureCursorVisible();
         break;
