@@ -6,6 +6,7 @@
 #include <QSerialPortInfo>
 #include <QTextEdit>
 #include <QLineEdit>
+#include <QFile>
 
 class SerialTerminal: public QTextEdit
 {
@@ -31,16 +32,6 @@ signals:
      * @param command const QString & Referenc to the command string to be stored on the log.
      */
     void emitStoreCommand( const QString & command );
-public:
-    /**
-     * @brief Sets the color of the terminal.
-     */
-    SerialTerminal();
-    /**
-     * @brief Used to return the string to be sent to the serial Port.
-     * @return Qstring String to be sent out of the terminal.
-     */
-    QString getCommand(){ return command; }
 
 public slots:
     /**
@@ -48,15 +39,29 @@ public slots:
      * @param newCommand const QString & The new value for the command.
      */
     void setCommand( const QString & newCommand );
+
+public:
+    /**
+     * @brief Sets the color of the terminal.
+     */
+    SerialTerminal();
+    /**
+     * @brief SerialTerminal Override to use when the object holds it's own log file.
+     * @param pathToLog
+     */
+    SerialTerminal(QString pathToLog);
+    /**
+     * @brief Used to return the string to be sent to the serial Port.
+     * @return Qstring String to be sent out of the terminal.
+     */
+    QString getCommand(){ return command; }
+
 protected:
     /**
      * @brief Override function, that listens for Enter or Return presses.
      */
     void keyPressEvent( QKeyEvent * e ) override;
-    /**
-     * @brief QString that holds the command typed.
-     */
-    QString command;
+
     /**
      * @brief Holds the last edition position. When the user presses a key is treated as if the cursor is in this position.
      * This is set eatch time the writing capability is enable, and when the user presses arrow keys.
@@ -66,11 +71,36 @@ protected:
      * @brief logLine int Holds the position of the line requested to the logger.
      */
     int logLine=0;
+private:
+    /**
+     * @brief Used to get a specific log line. It reeds the file from tale.
+     * If requested a line number grater then the number of lines in the file sets logLine to the line recived.
+     * @param line int Desired line number to be read.
+     * @return return the desired String.
+     */
+    QString getLogLine( int line );
+    /**
+     * @brief command QString that holds the command typed.
+     */
+    QString command;
+    /**
+     * @brief file QFile used to store the file in with the log is stored.
+     */
+    QFile * logFile = nullptr;
+    /**
+     * @brief logDirectory QString Holds the path to the log file.
+     */
+    QString logDirectory;
 };
 
 class SerialCom : public QQuickItem
 {
     Q_OBJECT
+signals:
+    /**
+     * @brief Used as Signal to know when Serial data are available to read.
+     */
+    void emitReadReady();
 public:
     /**
      * @brief Constructor function, it reeds all COM ports, stores it's names, then configure the instance of QSerialPort to future use.
@@ -104,21 +134,6 @@ public:
      * @return Returns true if COM ports were added or subtracted, false otherwise.
      */
     bool portListChanged();
-private:
-    /**
-     * @brief List of all available COM ports.
-     */
-    QList<QSerialPortInfo> COMList;
-    /**
-     * @brief Used to hold the communication with the active COM port.
-     */
-    QSerialPort currentCOM;
-signals:
-    /**
-     * @brief Used as Signal to know when Serial data are available to read.
-     */
-    void readyRead();
-public slots:
     /**
      * @brief Sends a QString to the open COM port.
      * @param msg const QString & The QString to be sent.
@@ -137,6 +152,16 @@ public slots:
      * @return Returns true if it succeeds in establish the connection, false otherwise.
      */
     bool connect( const QString & COMName);
+
+private:
+    /**
+     * @brief List of all available COM ports.
+     */
+    QList<QSerialPortInfo> COMList;
+    /**
+     * @brief Used to hold the communication with the active COM port.
+     */
+    QSerialPort currentCOM;
 };
 
 #endif // SERIALCOM_H

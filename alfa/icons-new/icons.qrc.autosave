@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/new_labcim_labBot/alfa/icons-new">
+        <file>Download_24x24.png</file>
+        <file>Folder_24x24.png</file>
+        <file>New_24x24.png</file>
+        <file>Open_24x24.png</file>
+        <file>Play_24x24.png</file>
+        <file>Refresh_24x24.png</file>
+        <file>Save_24x24.png</file>
+        <file>Synchronize_24x24.png</file>
+        <file>Text Document_24x24.png</file>
+        <file>Undo_24x24.png</file>
+        <file>Upload_24x24.png</file>
+        <file>Add_24x24.png</file>
+        <file>Cancel_24x24.png</file>
+        <file>Check_24x24.png</file>
+        <file>Delete_24x24.png</file>
+        <file>Edit_24x24.png</file>
+        <file>Favorites_24x24.png</file>
+        <file>Negative_24x24.png</file>
+        <file>Paste_24x24.png</file>
+        <file>Picture_24x24.png</file>
+        <file>Positive_24x24.png</file>
+        <file>Print_24x24.png</file>
+        <file>Properties_24x24.png</file>
+        <file>Redo_24x24.png</file>
+        <file>Remove_24x24.png</file>
+        <file>Search_24x24.png</file>
+        <file>Settings_24x24.png</file>
+        <file>Stock Index Down_24x24.png</file>
+        <file>Stock Index Up_24x24.png</file>
+        <file>Stop_24x24.png</file>
+    </qresource>
+</RCC>

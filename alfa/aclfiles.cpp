@@ -1,10 +1,11 @@
 #include "aclfiles.h"
 #include <QDebug>
+
 aclFiles::aclFiles(){
 }
 aclFiles::~aclFiles(){
-
 }
+
 void aclFiles::setFilename(bool type){
     if(type){
         fileDialog = new QFileDialog(nullptr, "Salvar");
@@ -39,6 +40,7 @@ void aclFiles::setFilename(bool type){
 QString aclFiles::getFilename(){
     return filename;
 }
+
 QString aclFiles::getFilename(QString filepath){
     QFileInfo * Finfo;
     Finfo = new QFileInfo(QFile(filepath));
