@@ -1,14 +1,7 @@
 #include "aclfiles.h"
 #include <QDebug>
-aclFiles::aclFiles()
-{
-    fileDialog = new QFileDialog(nullptr, "Salvar");
-    fileDialog->setFileMode(QFileDialog::AnyFile);
-    fileDialog->setNameFilter(QObject::tr("All files(*.dnl);;Text File(*.txt)"));
-    fileDialog->setViewMode(QFileDialog::Detail);
+aclFiles::aclFiles(){
 }
-
-
 aclFiles::~aclFiles(){
 
 }
@@ -59,6 +52,7 @@ QStringList aclFiles::getFilenames(){
 QString aclFiles::getFilePath(){
     return filePath;
 }
+
 QStringList aclFiles::getFilePaths(){
     return filePaths;
 }
@@ -84,7 +78,7 @@ QString aclFiles::openFile(QString filepath){
             return nullptr;
         }
         QTextStream in(file);
-        qDebug() << in.readLine();
+        //qDebug() << in.readLine();
         while(!in.atEnd()){
             text += in.readLine() + " \n";
         }
