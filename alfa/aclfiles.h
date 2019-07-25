@@ -29,32 +29,37 @@ public:
     */
     ~aclFiles();
     /**
-     * @brief setFilename open a pop-up windows to select a file. The name is stored at filename.
+     * @brief setFilename setFilename open a pop-up windows to select a file. The name is stored at filename.
+     * @param type bool Decide if the dialog will be for openning (allow multiple files) ou saving (one file only)
      */
     void setFilename(bool type=0);
     /**
-     * @brief getFilename Returns the name of the file stored at filename.
+     * @brief getFilename Getter for the private attribute filename.
      * @return QString The content of the attribute filename.
      */
     QString getFilename();
     /**
-     * @brief getFilename
-     * @param filepath
-     * @return
+     * @brief getFilename Getter for the base name of a file pointed by filepath
+     * @param filepath QString The path for a file
+     * @return QString the base name of the file pointed by filepath
      */
     QString getFilename(QString filepath);
     /**
-     * @brief getFilenames
-     * @return
+     * @brief getFilenames Getter for the private attribute filenames
+     * @return QStringList the content of the attribute filenames
      */
     QStringList getFilenames();
     /**
-     * @brief getFilePath
-     * @return
+     * @brief getFilePath Getter for the private attribute filePath
+     * @return QString the content of the attribute filePath
      */
 
     QString getFilePath();
 
+    /**
+     * @brief getFilePaths Getter for the private attribute filePaths
+     * @return QStringList the content of the attribute filePaths
+     */
     QStringList getFilePaths();
     /**
     * @brief Save content of QString into the file pointed by filename.
@@ -63,15 +68,12 @@ public:
     */
     bool saveToFile(QString content);
     /**
-     * @brief openFile Open a file and show it at a text-edit tab
-     * @return bool Confirms if the file has been opened.
+     * @brief openFile Gets the content of a file pointed by filepath
+     * @param filepath The path to a given file
+     * @return QString the content of a file
      */
     QString openFile(QString filepath);
-    /**
-     * @brief openFiles Open multiples files, each one in a differently text-edit tab.
-     * @return bool Confirms if all the files opened correctly.
-     */
-    bool openFiles();
+
 };
 
 #endif // ACLFILES_H

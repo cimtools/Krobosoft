@@ -1,0 +1,149 @@
+\hypertarget{classSerialTerminal}{}\section{Serial\+Terminal Class Reference}
+\label{classSerialTerminal}\index{Serial\+Terminal@{Serial\+Terminal}}
+
+
+Inheritance diagram for Serial\+Terminal\+:
+% FIG 0
+
+
+Collaboration diagram for Serial\+Terminal\+:
+% FIG 1
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSerialTerminal_a0bec3c5cd061b502ce104e7add993510}{set\+Command} (const Q\+String \&new\+Command)
+\begin{DoxyCompactList}\small\item\em It change the current command to be sent. Used to iterate through the log entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSerialTerminal_a53f49282e28fb496fc77fcd8362e1298}{emit\+Data\+Ready} (const Q\+String \&data)
+\begin{DoxyCompactList}\small\item\em Signal emitted when user press Enter or Return. \end{DoxyCompactList}\item 
+void \hyperlink{classSerialTerminal_a2307f483e520204281ab5a0bbb262651}{emit\+Byte\+Ready} (const char \&byte)
+\begin{DoxyCompactList}\small\item\em Sgnal emitted user press a single key. \end{DoxyCompactList}\item 
+void \hyperlink{classSerialTerminal_a2676d7377ffa113b1f3431cdf1cde904}{emit\+Get\+Log} (const int \&lines\+From\+End)
+\begin{DoxyCompactList}\small\item\em Requests the log object to send a log line. \end{DoxyCompactList}\item 
+void \hyperlink{classSerialTerminal_a8c8fbd2c39d1c6870560abf2808f040e}{emit\+Store\+Command} (const Q\+String \&\hyperlink{classSerialTerminal_a4f76b31e778ed594dc6395909076f33d}{command})
+\begin{DoxyCompactList}\small\item\em emit\+Store\+Command Signal to store a command in the log. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSerialTerminal_a44bef28f4452b91b5cd108c173575ad8}\label{classSerialTerminal_a44bef28f4452b91b5cd108c173575ad8}} 
+\hyperlink{classSerialTerminal_a44bef28f4452b91b5cd108c173575ad8}{Serial\+Terminal} ()
+\begin{DoxyCompactList}\small\item\em Sets the color of the terminal. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classSerialTerminal_a1047c3c8d5502824822a4c95511b8526}{get\+Command} ()
+\begin{DoxyCompactList}\small\item\em Used to return the string to be sent to the serial Port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSerialTerminal_ab14904d3ad1af44ee72eb93a0823f446}\label{classSerialTerminal_ab14904d3ad1af44ee72eb93a0823f446}} 
+void \hyperlink{classSerialTerminal_ab14904d3ad1af44ee72eb93a0823f446}{key\+Press\+Event} (Q\+Key\+Event $\ast$e) override
+\begin{DoxyCompactList}\small\item\em Override function, that listens for Enter or Return presses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSerialTerminal_a4f76b31e778ed594dc6395909076f33d}\label{classSerialTerminal_a4f76b31e778ed594dc6395909076f33d}} 
+Q\+String \hyperlink{classSerialTerminal_a4f76b31e778ed594dc6395909076f33d}{command}
+\begin{DoxyCompactList}\small\item\em Q\+String that holds the command typed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSerialTerminal_a6bd4818e245556d7c90892837ff4e8b3}\label{classSerialTerminal_a6bd4818e245556d7c90892837ff4e8b3}} 
+int \hyperlink{classSerialTerminal_a6bd4818e245556d7c90892837ff4e8b3}{last\+Edit\+Position} =0
+\begin{DoxyCompactList}\small\item\em Holds the last edition position. When the user presses a key is treated as if the cursor is in this position. This is set eatch time the writing capability is enable, and when the user presses arrow keys. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSerialTerminal_a79d3aa77b5c157012f443de04004b00f}\label{classSerialTerminal_a79d3aa77b5c157012f443de04004b00f}} 
+int \hyperlink{classSerialTerminal_a79d3aa77b5c157012f443de04004b00f}{log\+Line} =0
+\begin{DoxyCompactList}\small\item\em log\+Line int Holds the position of the line requested to the logger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSerialTerminal_a2307f483e520204281ab5a0bbb262651}\label{classSerialTerminal_a2307f483e520204281ab5a0bbb262651}} 
+\index{Serial\+Terminal@{Serial\+Terminal}!emit\+Byte\+Ready@{emit\+Byte\+Ready}}
+\index{emit\+Byte\+Ready@{emit\+Byte\+Ready}!Serial\+Terminal@{Serial\+Terminal}}
+\subsubsection{\texorpdfstring{emit\+Byte\+Ready}{emitByteReady}}
+{\footnotesize\ttfamily void Serial\+Terminal\+::emit\+Byte\+Ready (\begin{DoxyParamCaption}\item[{const char \&}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Sgnal emitted user press a single key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & char \& byte to be sent. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSerialTerminal_a53f49282e28fb496fc77fcd8362e1298}\label{classSerialTerminal_a53f49282e28fb496fc77fcd8362e1298}} 
+\index{Serial\+Terminal@{Serial\+Terminal}!emit\+Data\+Ready@{emit\+Data\+Ready}}
+\index{emit\+Data\+Ready@{emit\+Data\+Ready}!Serial\+Terminal@{Serial\+Terminal}}
+\subsubsection{\texorpdfstring{emit\+Data\+Ready}{emitDataReady}}
+{\footnotesize\ttfamily void Serial\+Terminal\+::emit\+Data\+Ready (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal emitted when user press Enter or Return. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & const Q\+String \& The String that is to be sent out of the terminal. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSerialTerminal_a2676d7377ffa113b1f3431cdf1cde904}\label{classSerialTerminal_a2676d7377ffa113b1f3431cdf1cde904}} 
+\index{Serial\+Terminal@{Serial\+Terminal}!emit\+Get\+Log@{emit\+Get\+Log}}
+\index{emit\+Get\+Log@{emit\+Get\+Log}!Serial\+Terminal@{Serial\+Terminal}}
+\subsubsection{\texorpdfstring{emit\+Get\+Log}{emitGetLog}}
+{\footnotesize\ttfamily void Serial\+Terminal\+::emit\+Get\+Log (\begin{DoxyParamCaption}\item[{const int \&}]{lines\+From\+End }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Requests the log object to send a log line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lines\+From\+End} & const int \& Position of the desired line. Counting from the end of the file (where is the last entry). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSerialTerminal_a8c8fbd2c39d1c6870560abf2808f040e}\label{classSerialTerminal_a8c8fbd2c39d1c6870560abf2808f040e}} 
+\index{Serial\+Terminal@{Serial\+Terminal}!emit\+Store\+Command@{emit\+Store\+Command}}
+\index{emit\+Store\+Command@{emit\+Store\+Command}!Serial\+Terminal@{Serial\+Terminal}}
+\subsubsection{\texorpdfstring{emit\+Store\+Command}{emitStoreCommand}}
+{\footnotesize\ttfamily void Serial\+Terminal\+::emit\+Store\+Command (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+emit\+Store\+Command Signal to store a command in the log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & const Q\+String \& Referenc to the command string to be stored on the log. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSerialTerminal_a1047c3c8d5502824822a4c95511b8526}\label{classSerialTerminal_a1047c3c8d5502824822a4c95511b8526}} 
+\index{Serial\+Terminal@{Serial\+Terminal}!get\+Command@{get\+Command}}
+\index{get\+Command@{get\+Command}!Serial\+Terminal@{Serial\+Terminal}}
+\subsubsection{\texorpdfstring{get\+Command()}{getCommand()}}
+{\footnotesize\ttfamily Q\+String Serial\+Terminal\+::get\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used to return the string to be sent to the serial Port. 
+
+\begin{DoxyReturn}{Returns}
+Qstring String to be sent out of the terminal. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialTerminal_a0bec3c5cd061b502ce104e7add993510}\label{classSerialTerminal_a0bec3c5cd061b502ce104e7add993510}} 
+\index{Serial\+Terminal@{Serial\+Terminal}!set\+Command@{set\+Command}}
+\index{set\+Command@{set\+Command}!Serial\+Terminal@{Serial\+Terminal}}
+\subsubsection{\texorpdfstring{set\+Command}{setCommand}}
+{\footnotesize\ttfamily void Serial\+Terminal\+::set\+Command (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{new\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+It change the current command to be sent. Used to iterate through the log entries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Command} & const Q\+String \& The new value for the command. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+serialcom.\+h\item 
+serialcom.\+cpp\end{DoxyCompactItemize}

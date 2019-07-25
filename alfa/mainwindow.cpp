@@ -5,7 +5,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), serial(new SerialCom){
 
     ui->setupUi(this);
-    SerialTerminal * terminal = new SerialTerminal();
+    terminal = new SerialTerminal();
     ui->terminalLayout->addWidget( terminal );
 
     this->startTimer(200); //Timer usado para checar se houve mudaça na lista de portas COM.
@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow(){
     delete ui;
+    delete terminal;
 }
 
 void MainWindow::on_comboBox_activated(const QString & arg1){ //É chamada quando seleciona um item da comboBox
@@ -40,10 +41,36 @@ void MainWindow::timerEvent(QTimerEvent * a){
     }
 }
 
-//void MainWindow::saveFile(string )
+//New button
+void MainWindow::on_new_button_clicked(){
+    openTab();
+}
+//New action
+void MainWindow::on_actionNovo_triggered(){
+    openTab();
+}
+//Save as button
+void MainWindow::on_save_button_clicked(){
+    saveFileAs();
+}
+//Save as action
+void MainWindow::on_actionSalvar_Como_triggered(){
+    saveFileAs();
+}
+//Open button
+void MainWindow::on_openButton_clicked(){
+    openFile();
+}
+//Open action
+void MainWindow::on_actionAbrir_triggered(){
+    openFile();
+}
 
-void MainWindow::on_save_button_clicked()
-{
+
+
+//####################################################################### FUNCTIONS
+
+void MainWindow::saveFileAs(){
     files = new aclFiles();
     files->setFilename(1);
     QTextEdit * temp = (QTextEdit *) ui->tabWidget->currentWidget();
@@ -56,27 +83,6 @@ void MainWindow::on_save_button_clicked()
     delete files;
 }
 
-void MainWindow::on_actionSalvar_Como_triggered()
-{
-    on_save_button_clicked();
-}
-
-void MainWindow::on_new_button_clicked()
-{
-    openTab();
-}
-
-void MainWindow::on_openButton_clicked()
-{
-    files = new aclFiles();
-    files->setFilename(0);
-    foreach(QString filepath, files->getFilePaths()){
-        qDebug() << filepath;
-        openTab(files->getFilename(filepath), files->openFile(filepath));
-    }
-}
-
-//####################################################################### FUNCTIONS
 void MainWindow::openTab(const QString name, QString content){
     int i = ui->tabWidget->currentIndex() +1;
     QTextEdit * temp = new QTextEdit();
@@ -86,13 +92,15 @@ void MainWindow::openTab(const QString name, QString content){
     temp = nullptr;
 }
 
-void MainWindow::on_actionAbrir_triggered()
-{
-    on_openButton_clicked();
+void MainWindow::openFile(){
+    files = new aclFiles();
+    files->setFilename();
+    foreach(QString filepath, files->getFilePaths()){
+        //qDebug() << filepath;
+        openTab(files->getFilename(filepath), files->openFile(filepath));
+    }
+    delete files;
 }
 
-void MainWindow::on_actionNovo_triggered()
-{
-    openTab();
-}
+
 

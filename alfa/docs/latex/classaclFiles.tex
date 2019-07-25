@@ -1,0 +1,157 @@
+\hypertarget{classaclFiles}{}\section{acl\+Files Class Reference}
+\label{classaclFiles}\index{acl\+Files@{acl\+Files}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classaclFiles_a624023b49f732728e4afea7e34e35ca9}\label{classaclFiles_a624023b49f732728e4afea7e34e35ca9}} 
+\hyperlink{classaclFiles_a624023b49f732728e4afea7e34e35ca9}{acl\+Files} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classaclFiles}{acl\+Files} Constructor for the class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaclFiles_a775b6e59428624ce37d432d01b9b2421}\label{classaclFiles_a775b6e59428624ce37d432d01b9b2421}} 
+\hyperlink{classaclFiles_a775b6e59428624ce37d432d01b9b2421}{$\sim$acl\+Files} ()
+\begin{DoxyCompactList}\small\item\em $\sim$acl\+Files Destructor for the class. \end{DoxyCompactList}\item 
+void \hyperlink{classaclFiles_aa2948bd2ae50c0cd073da7ce73c5cbc5}{set\+Filename} (bool type=0)
+\begin{DoxyCompactList}\small\item\em set\+Filename set\+Filename open a pop-\/up windows to select a file. The name is stored at filename. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classaclFiles_a3ef3210f1bb426a0d4c02867780d861f}{get\+Filename} ()
+\begin{DoxyCompactList}\small\item\em get\+Filename Getter for the private attribute filename. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classaclFiles_a827c8b42e03850775de3feef9e14885d}{get\+Filename} (Q\+String filepath)
+\begin{DoxyCompactList}\small\item\em get\+Filename Getter for the base name of a file pointed by filepath \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{classaclFiles_a5740e2ee3301c0ec790059dd2640c235}{get\+Filenames} ()
+\begin{DoxyCompactList}\small\item\em get\+Filenames Getter for the private attribute filenames \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classaclFiles_a9c7981b88715a060d0e93065fabd7dfc}{get\+File\+Path} ()
+\begin{DoxyCompactList}\small\item\em get\+File\+Path Getter for the private attribute file\+Path \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{classaclFiles_a6c2a63e14203a702eabad2f3d076c638}{get\+File\+Paths} ()
+\begin{DoxyCompactList}\small\item\em get\+File\+Paths Getter for the private attribute file\+Paths \end{DoxyCompactList}\item 
+bool \hyperlink{classaclFiles_a59acda65294b886be102ecf7e08ccf64}{save\+To\+File} (Q\+String content)
+\begin{DoxyCompactList}\small\item\em Save content of Q\+String into the file pointed by filename. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classaclFiles_ab1a51796d7112b2a223e968375ac4be0}{open\+File} (Q\+String filepath)
+\begin{DoxyCompactList}\small\item\em open\+File Gets the content of a file pointed by filepath \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classaclFiles_a3ef3210f1bb426a0d4c02867780d861f}\label{classaclFiles_a3ef3210f1bb426a0d4c02867780d861f}} 
+\index{acl\+Files@{acl\+Files}!get\+Filename@{get\+Filename}}
+\index{get\+Filename@{get\+Filename}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{get\+Filename()}{getFilename()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+String acl\+Files\+::get\+Filename (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Filename Getter for the private attribute filename. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String The content of the attribute filename. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classaclFiles_a827c8b42e03850775de3feef9e14885d}\label{classaclFiles_a827c8b42e03850775de3feef9e14885d}} 
+\index{acl\+Files@{acl\+Files}!get\+Filename@{get\+Filename}}
+\index{get\+Filename@{get\+Filename}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{get\+Filename()}{getFilename()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+String acl\+Files\+::get\+Filename (\begin{DoxyParamCaption}\item[{Q\+String}]{filepath }\end{DoxyParamCaption})}
+
+
+
+get\+Filename Getter for the base name of a file pointed by filepath 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Q\+String The path for a file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String the base name of the file pointed by filepath 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classaclFiles_a5740e2ee3301c0ec790059dd2640c235}\label{classaclFiles_a5740e2ee3301c0ec790059dd2640c235}} 
+\index{acl\+Files@{acl\+Files}!get\+Filenames@{get\+Filenames}}
+\index{get\+Filenames@{get\+Filenames}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{get\+Filenames()}{getFilenames()}}
+{\footnotesize\ttfamily Q\+String\+List acl\+Files\+::get\+Filenames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Filenames Getter for the private attribute filenames 
+
+\begin{DoxyReturn}{Returns}
+Q\+String\+List the content of the attribute filenames 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classaclFiles_a9c7981b88715a060d0e93065fabd7dfc}\label{classaclFiles_a9c7981b88715a060d0e93065fabd7dfc}} 
+\index{acl\+Files@{acl\+Files}!get\+File\+Path@{get\+File\+Path}}
+\index{get\+File\+Path@{get\+File\+Path}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{get\+File\+Path()}{getFilePath()}}
+{\footnotesize\ttfamily Q\+String acl\+Files\+::get\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+File\+Path Getter for the private attribute file\+Path 
+
+\begin{DoxyReturn}{Returns}
+Q\+String the content of the attribute file\+Path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classaclFiles_a6c2a63e14203a702eabad2f3d076c638}\label{classaclFiles_a6c2a63e14203a702eabad2f3d076c638}} 
+\index{acl\+Files@{acl\+Files}!get\+File\+Paths@{get\+File\+Paths}}
+\index{get\+File\+Paths@{get\+File\+Paths}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{get\+File\+Paths()}{getFilePaths()}}
+{\footnotesize\ttfamily Q\+String\+List acl\+Files\+::get\+File\+Paths (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+File\+Paths Getter for the private attribute file\+Paths 
+
+\begin{DoxyReturn}{Returns}
+Q\+String\+List the content of the attribute file\+Paths 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classaclFiles_ab1a51796d7112b2a223e968375ac4be0}\label{classaclFiles_ab1a51796d7112b2a223e968375ac4be0}} 
+\index{acl\+Files@{acl\+Files}!open\+File@{open\+File}}
+\index{open\+File@{open\+File}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{open\+File()}{openFile()}}
+{\footnotesize\ttfamily Q\+String acl\+Files\+::open\+File (\begin{DoxyParamCaption}\item[{Q\+String}]{filepath }\end{DoxyParamCaption})}
+
+
+
+open\+File Gets the content of a file pointed by filepath 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to a given file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String the content of a file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classaclFiles_a59acda65294b886be102ecf7e08ccf64}\label{classaclFiles_a59acda65294b886be102ecf7e08ccf64}} 
+\index{acl\+Files@{acl\+Files}!save\+To\+File@{save\+To\+File}}
+\index{save\+To\+File@{save\+To\+File}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{save\+To\+File()}{saveToFile()}}
+{\footnotesize\ttfamily bool acl\+Files\+::save\+To\+File (\begin{DoxyParamCaption}\item[{Q\+String}]{content }\end{DoxyParamCaption})}
+
+
+
+Save content of Q\+String into the file pointed by filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em content} & Q\+String The content of the text-\/edit object to be saved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Confirms if the saving has occurrely succesfully. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classaclFiles_aa2948bd2ae50c0cd073da7ce73c5cbc5}\label{classaclFiles_aa2948bd2ae50c0cd073da7ce73c5cbc5}} 
+\index{acl\+Files@{acl\+Files}!set\+Filename@{set\+Filename}}
+\index{set\+Filename@{set\+Filename}!acl\+Files@{acl\+Files}}
+\subsubsection{\texorpdfstring{set\+Filename()}{setFilename()}}
+{\footnotesize\ttfamily void acl\+Files\+::set\+Filename (\begin{DoxyParamCaption}\item[{bool}]{type = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+set\+Filename set\+Filename open a pop-\/up windows to select a file. The name is stored at filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & bool Decide if the dialog will be for openning (allow multiple files) ou saving (one file only) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+aclfiles.\+h\item 
+aclfiles.\+cpp\end{DoxyCompactItemize}

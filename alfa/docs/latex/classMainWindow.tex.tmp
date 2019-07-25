@@ -1,0 +1,25 @@
+\hypertarget{classMainWindow}{}\section{Main\+Window Class Reference}
+\label{classMainWindow}\index{Main\+Window@{Main\+Window}}
+
+
+Inheritance diagram for Main\+Window\+:
+% FIG 0
+
+
+Collaboration diagram for Main\+Window\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_a996c5a2b6f77944776856f08ec30858d}\label{classMainWindow_a996c5a2b6f77944776856f08ec30858d}} 
+{\bfseries Main\+Window} (Q\+Widget $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{classMainWindow_a110dc0c346497035b866d67efa315ed8}\label{classMainWindow_a110dc0c346497035b866d67efa315ed8}} 
+void {\bfseries open\+Tab} (const Q\+String name=\char`\"{}Novo\char`\"{}, const Q\+String content=nullptr)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

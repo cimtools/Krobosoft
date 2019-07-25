@@ -30,6 +30,12 @@ public:
 
     void openTab(const QString name = "Novo", const QString content = nullptr);
 
+    void openFile();
+
+    void saveFile();
+
+    void saveFileAs();
+
 private slots:
     void on_comboBox_activated(const QString &arg1);
 
@@ -51,6 +57,7 @@ private:
     Ui::MainWindow * ui;
     int timerId =0;
     SerialCom * serial;
+    SerialTerminal * terminal;
     aclFiles *files;
 };
 

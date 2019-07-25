@@ -1,0 +1,167 @@
+\hypertarget{classSerialCom}{}\section{Serial\+Com Class Reference}
+\label{classSerialCom}\index{Serial\+Com@{Serial\+Com}}
+
+
+Inheritance diagram for Serial\+Com\+:
+% FIG 0
+
+
+Collaboration diagram for Serial\+Com\+:
+% FIG 1
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classSerialCom_a7239ab9610d097a8f2dabfbb125eccc6}{send} (const Q\+String \&msg)
+\begin{DoxyCompactList}\small\item\em Sends a Q\+String to the open C\+OM port. \end{DoxyCompactList}\item 
+int \hyperlink{classSerialCom_ab4428cc25df9b3d7e3903a74ae52b30b}{send\+Byte} (const char \&byte)
+\begin{DoxyCompactList}\small\item\em send\+Byte \end{DoxyCompactList}\item 
+bool \hyperlink{classSerialCom_a7a89d87e537831c46dccbd4f1c06d70c}{connect} (const Q\+String \&C\+O\+M\+Name)
+\begin{DoxyCompactList}\small\item\em Used to open communication with a C\+OM port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSerialCom_a677069983c113dcc01cdbd43c1ad9a71}\label{classSerialCom_a677069983c113dcc01cdbd43c1ad9a71}} 
+void \hyperlink{classSerialCom_a677069983c113dcc01cdbd43c1ad9a71}{ready\+Read} ()
+\begin{DoxyCompactList}\small\item\em Used as Signal to know when Serial data are available to read. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSerialCom_a8d632d66c4b9813b7e41f3a2b4238e7d}{Serial\+Com} (qint32 baud\+Rate=Q\+Serial\+Port\+::\+Baud9600, Q\+Serial\+Port\+::\+Data\+Bits data\+Bytes=Q\+Serial\+Port\+::\+Data8, Q\+Serial\+Port\+::\+Parity parity=Q\+Serial\+Port\+::\+No\+Parity, Q\+Serial\+Port\+::\+Flow\+Control flow\+Control=Q\+Serial\+Port\+::\+No\+Flow\+Control, Q\+Serial\+Port\+::\+Stop\+Bits stop\+Bit=Q\+Serial\+Port\+::\+One\+Stop)
+\begin{DoxyCompactList}\small\item\em Constructor function, it reeds all C\+OM ports, stores it\textquotesingle{}s names, then configure the instance of Q\+Serial\+Port to future use. Whit exception of baud\+Rate, all other parameters are enums defined in Q\+Serial\+Port class. \end{DoxyCompactList}\item 
+Q\+List$<$ Q\+String $>$ \hyperlink{classSerialCom_ac9a5c3d791e3854e18f5cf36e1626d5f}{get\+C\+O\+M\+List} ()
+\begin{DoxyCompactList}\small\item\em Reads the open C\+OM ports, iterates through them and extracts it\textquotesingle{}s names. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSerialCom_ace69c1729ccc045f519131a50c949ac1}\label{classSerialCom_ace69c1729ccc045f519131a50c949ac1}} 
+void \hyperlink{classSerialCom_ace69c1729ccc045f519131a50c949ac1}{close} ()
+\begin{DoxyCompactList}\small\item\em Closes the C\+OM port. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classSerialCom_ad601cc1e7675a979600a8f469fe2e611}{read} ()
+\begin{DoxyCompactList}\small\item\em Reads all available data on the current C\+OM port. \end{DoxyCompactList}\item 
+bool \hyperlink{classSerialCom_ad4ae114a9e7b76b958776799743dd8a5}{port\+List\+Changed} ()
+\begin{DoxyCompactList}\small\item\em Function used to know if changes in the list of C\+OM ports occurred. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSerialCom_a8d632d66c4b9813b7e41f3a2b4238e7d}\label{classSerialCom_a8d632d66c4b9813b7e41f3a2b4238e7d}} 
+\index{Serial\+Com@{Serial\+Com}!Serial\+Com@{Serial\+Com}}
+\index{Serial\+Com@{Serial\+Com}!Serial\+Com@{Serial\+Com}}
+\subsubsection{\texorpdfstring{Serial\+Com()}{SerialCom()}}
+{\footnotesize\ttfamily Serial\+Com\+::\+Serial\+Com (\begin{DoxyParamCaption}\item[{qint32}]{baud\+Rate = {\ttfamily QSerialPort\+:\+:Baud9600},  }\item[{Q\+Serial\+Port\+::\+Data\+Bits}]{data\+Bytes = {\ttfamily QSerialPort\+:\+:Data8},  }\item[{Q\+Serial\+Port\+::\+Parity}]{parity = {\ttfamily QSerialPort\+:\+:NoParity},  }\item[{Q\+Serial\+Port\+::\+Flow\+Control}]{flow\+Control = {\ttfamily QSerialPort\+:\+:NoFlowControl},  }\item[{Q\+Serial\+Port\+::\+Stop\+Bits}]{stop\+Bit = {\ttfamily QSerialPort\+:\+:OneStop} }\end{DoxyParamCaption})}
+
+
+
+Constructor function, it reeds all C\+OM ports, stores it\textquotesingle{}s names, then configure the instance of Q\+Serial\+Port to future use. Whit exception of baud\+Rate, all other parameters are enums defined in Q\+Serial\+Port class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baud\+Rate} & qint32 Baud rate of the port. \\
+\hline
+{\em data\+Bytes} & Q\+Serial\+Port\+::\+Data\+Bits Number of data bits. \\
+\hline
+{\em parity} & Q\+Serial\+Port\+::\+Parity Parity type. \\
+\hline
+{\em flow\+Control} & Q\+Serial\+Port\+::\+Flow\+Control Type of flow control. \\
+\hline
+{\em stop\+Bit} & Q\+Serial\+Port\+::\+Stop\+Bits Set stop bit configuration. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSerialCom_a7a89d87e537831c46dccbd4f1c06d70c}\label{classSerialCom_a7a89d87e537831c46dccbd4f1c06d70c}} 
+\index{Serial\+Com@{Serial\+Com}!connect@{connect}}
+\index{connect@{connect}!Serial\+Com@{Serial\+Com}}
+\subsubsection{\texorpdfstring{connect}{connect}}
+{\footnotesize\ttfamily bool Serial\+Com\+::connect (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{C\+O\+M\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Used to open communication with a C\+OM port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C\+O\+M\+Name} & const Q\+String \& Qstring that contain the name of the desired C\+OM port. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if it succeeds in establish the connection, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialCom_ac9a5c3d791e3854e18f5cf36e1626d5f}\label{classSerialCom_ac9a5c3d791e3854e18f5cf36e1626d5f}} 
+\index{Serial\+Com@{Serial\+Com}!get\+C\+O\+M\+List@{get\+C\+O\+M\+List}}
+\index{get\+C\+O\+M\+List@{get\+C\+O\+M\+List}!Serial\+Com@{Serial\+Com}}
+\subsubsection{\texorpdfstring{get\+C\+O\+M\+List()}{getCOMList()}}
+{\footnotesize\ttfamily Q\+List$<$ Q\+String $>$ Serial\+Com\+::get\+C\+O\+M\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads the open C\+OM ports, iterates through them and extracts it\textquotesingle{}s names. 
+
+\begin{DoxyReturn}{Returns}
+Q\+List$<$\+Q\+String$>$ Return the list of C\+OM ports existents. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialCom_ad4ae114a9e7b76b958776799743dd8a5}\label{classSerialCom_ad4ae114a9e7b76b958776799743dd8a5}} 
+\index{Serial\+Com@{Serial\+Com}!port\+List\+Changed@{port\+List\+Changed}}
+\index{port\+List\+Changed@{port\+List\+Changed}!Serial\+Com@{Serial\+Com}}
+\subsubsection{\texorpdfstring{port\+List\+Changed()}{portListChanged()}}
+{\footnotesize\ttfamily bool Serial\+Com\+::port\+List\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function used to know if changes in the list of C\+OM ports occurred. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if C\+OM ports were added or subtracted, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialCom_ad601cc1e7675a979600a8f469fe2e611}\label{classSerialCom_ad601cc1e7675a979600a8f469fe2e611}} 
+\index{Serial\+Com@{Serial\+Com}!read@{read}}
+\index{read@{read}!Serial\+Com@{Serial\+Com}}
+\subsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily Q\+String Serial\+Com\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads all available data on the current C\+OM port. 
+
+\begin{DoxyReturn}{Returns}
+Return C\+OM buffer data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialCom_a7239ab9610d097a8f2dabfbb125eccc6}\label{classSerialCom_a7239ab9610d097a8f2dabfbb125eccc6}} 
+\index{Serial\+Com@{Serial\+Com}!send@{send}}
+\index{send@{send}!Serial\+Com@{Serial\+Com}}
+\subsubsection{\texorpdfstring{send}{send}}
+{\footnotesize\ttfamily int Serial\+Com\+::send (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Sends a Q\+String to the open C\+OM port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & const Q\+String \& The Q\+String to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns true if it succeeds is sending the message, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialCom_ab4428cc25df9b3d7e3903a74ae52b30b}\label{classSerialCom_ab4428cc25df9b3d7e3903a74ae52b30b}} 
+\index{Serial\+Com@{Serial\+Com}!send\+Byte@{send\+Byte}}
+\index{send\+Byte@{send\+Byte}!Serial\+Com@{Serial\+Com}}
+\subsubsection{\texorpdfstring{send\+Byte}{sendByte}}
+{\footnotesize\ttfamily int Serial\+Com\+::send\+Byte (\begin{DoxyParamCaption}\item[{const char \&}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+send\+Byte 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & const char \& Byte to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+serialcom.\+h\item 
+serialcom.\+cpp\end{DoxyCompactItemize}
