@@ -21,6 +21,16 @@ signals:
      * @param byte byte to be sent.
      */
     void emitByteReady( const char & byte );
+    /**
+     * @brief Requests the log object to send a log line.
+     * @param linesFromEnd Position of the desired line. Counting from the end of the file (where is the last entry).
+     */
+    void emitGetLog( const int & linesFromEnd );
+    /**
+     * @brief emitStoreCommand Signal to store a command in the log.
+     * @param command QString & Referenc to the command string to be stored on the log.
+     */
+    void emitStoreCommand( const QString & command );
 public:
     /**
      * @brief Sets the color of the terminal.
@@ -31,6 +41,13 @@ public:
      * @return Qstring String to be sent out of the terminal.
      */
     QString getCommand(){ return command; }
+
+public slots:
+    /**
+     * @brief It change the current command to be sent. Used to iterate through the log entries.
+     * @param newCommand QString & The new value for the command.
+     */
+    void setCommand( const QString & newCommand );
 protected:
     /**
      * @brief Override function, that listens for Enter or Return presses.
@@ -41,14 +58,14 @@ protected:
      */
     QString command;
     /**
-     * @brief true if the user is able to write text, false if the terminal is waiting for the COM port to finish.
-     */
-    bool writingEnable=true;//TODO
-    /**
      * @brief Holds the last edition position. When the user presses a key is treated as if the cursor is in this position.
      * This is set eatch time the writing capability is enable, and when the user presses arrow keys.
      */
-    int lastEditPosition;
+    int lastEditPosition=0;
+    /**
+     * @brief logLine int Holds the position of the line requested to the logger.
+     */
+    int logLine=0;
 };
 
 class SerialCom : public QQuickItem
@@ -88,17 +105,7 @@ public:
      * @param msg The QString to be sent.
      * @return Returns true if it succeeds is sending the message, false otherwise.
      */
-    int send( const QString & msg);
-    /**
-     * @brief sendByte
-     * @param byte Byte to be sent.
-     * @return
-     */
-    int sendByte( const char & byte);
-    /**
-     * @brief Function used to know if changes in the list of COM ports occurred.
-     * @return Returns true if COM ports were added or subtracted, false otherwise.
-     */
+
     bool portListChanged();
 
 private:
@@ -116,6 +123,17 @@ signals:
      */
     void readyRead();
 public slots:
+    int send( const QString & msg);
+    /**
+     * @brief sendByte
+     * @param byte Byte to be sent.
+     * @return
+     */
+    int sendByte( const char & byte);
+    /**
+     * @brief Function used to know if changes in the list of COM ports occurred.
+     * @return Returns true if COM ports were added or subtracted, false otherwise.
+     */
 };
 
 #endif // SERIALCOM_H

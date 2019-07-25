@@ -6,13 +6,25 @@ SerialTerminal::SerialTerminal(){
 }
 
 void SerialTerminal::keyPressEvent( QKeyEvent * e ){
+    ensureCursorVisible();
     switch (e->key()) {
     case Qt::Key_Return:
     case Qt::Key_Enter:
-        //emit emitDataReady(command);
-        command = "";
+        command += e->text();
+        //insertPlainText(e->text());//Comment this line too to stop echo on terminal.
+
+        emit emitDataReady(command);
         emit emitByteReady('\n');
-        ensureCursorVisible();
+
+        qDebug() << "Store command: " << command;
+        emit emitStoreCommand( command );
+
+        for( int i = 0; i < command.size()-1 ; i++ ){
+            textCursor().deletePreviousChar();
+        }
+
+        command = "";
+        logLine = 0;
         break;
     case Qt::Key_Backspace:
     case Qt::Key_Delete:
@@ -21,13 +33,25 @@ void SerialTerminal::keyPressEvent( QKeyEvent * e ){
             command.chop(1);
         }
         return;
+    case Qt::Key_Up:
+        logLine ++;
+        emit emitGetLog( logLine );//Change the current command, doing GUI treatment.
+        break;
     default:
         command += e->text();
         if(e->text().toStdString().size()>0)
         emit emitByteReady( e->text().toStdString().at(0) );
-        //insertPlainText(e->text()); //Coment this line to stop echo on terminal.
+        insertPlainText(e->text()); //Comment this line too to stop echo on terminal.
         break;
     }
+}
+
+void SerialTerminal::setCommand(const QString & newCommand ){
+    for( auto i = command.begin(); i < command.end(); i++ ){
+        textCursor().deletePreviousChar();
+    }
+    insertPlainText( newCommand );
+    command = newCommand;
 }
 
 SerialCom::SerialCom( qint32 baudRate , QSerialPort::DataBits dataBytes ,
@@ -77,7 +101,7 @@ bool SerialCom::connect(const QString & COMName){
 }
 
 int SerialCom::send(const QString & msg){
-    QString buffer = msg + '\r';
+    QString buffer = msg;
     qDebug() << "Enviando pela serial: " << buffer ;
     return ( currentCOM.write( buffer.toStdString().c_str(), buffer.size()) )? true : false;
 }
