@@ -1,8 +1,9 @@
-# new_labcim_labBot
+# Krobosoft
 
 New programming interface software to use with Intellitek robots compatible with ACL language.
 It is a frontend to the robot controler via serial comunication and simulation trought the
 [ACLC](https://github.com/cimtools/aclc) simulator.
+Krobosoft stands for KDE [Robosoft](https://github.com/cimtools/robosoft).
 
 # Install (on ubuntu Linux)
 
