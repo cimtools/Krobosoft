@@ -41,8 +41,6 @@ private slots:
 
     void on_new_button_clicked();
 
-    void on_toolButton_clicked();
-
     void on_actionAbrir_triggered();
 
     void on_actionNovo_triggered();
