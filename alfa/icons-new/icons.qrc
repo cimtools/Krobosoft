@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/new_labcim_labBot/alfa/icons-new">
+        <file>Download_24x24.png</file>
+        <file>Folder_24x24.png</file>
+        <file>New_24x24.png</file>
+        <file>Open_24x24.png</file>
+        <file>Play_24x24.png</file>
+        <file>Refresh_24x24.png</file>
+        <file>Save_24x24.png</file>
+        <file>Synchronize_24x24.png</file>
+        <file>Text Document_24x24.png</file>
+        <file>Undo_24x24.png</file>
+        <file>Upload_24x24.png</file>
+    </qresource>
+</RCC>

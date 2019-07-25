@@ -76,10 +76,25 @@ background-color: rgb(85, 87, 83);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">#new_button{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
       <string>new</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/New_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/New_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
     <widget class="QToolButton" name="save_button">
@@ -92,10 +107,25 @@ background-color: rgb(85, 87, 83);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">#save_button{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
       <string>sv</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Save_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Save_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
     <widget class="QToolButton" name="download_button">
@@ -108,10 +138,25 @@ background-color: rgb(85, 87, 83);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">#download_button{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
       <string>d</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Download_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Download_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
     <widget class="QToolButton" name="list_button">
@@ -124,10 +169,25 @@ background-color: rgb(85, 87, 83);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">#list_button{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
       <string>L</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Refresh_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Refresh_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
     <widget class="QTabWidget" name="tabWidget">
@@ -153,11 +213,25 @@ background-color: rgb(85, 87, 83);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);
-</string>
+      <string notr="true">#openButton{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
       <string>Abrir</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Open_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Open_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
     <zorder>save_button</zorder>
@@ -202,7 +276,7 @@ background-color: rgb(85, 87, 83);</string>
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>26</width>
+       <width>24</width>
        <height>24</height>
       </rect>
      </property>
@@ -210,39 +284,80 @@ background-color: rgb(85, 87, 83);</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/up.bmp&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(46, 52, 54);</string>
+      <string notr="true">#pushButton_9{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="graphlib.qrc">
-       <normaloff>:/icons/up.bmp</normaloff>:/icons/up.bmp</iconset>
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Upload_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Upload_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="shortcut">
+      <string notr="true"/>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
      </property>
     </widget>
-    <widget class="QToolButton" name="toolButton_10">
+    <widget class="QPushButton" name="pushButton_10">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>60</y>
-       <width>26</width>
+       <width>21</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(46, 52, 54);</string>
+      <string notr="true">#pushButton_10{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
-      <string>D</string>
+      <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>icons/down.bmp</normaloff>icons/down.bmp</iconset>
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Download_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Download_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="autoRepeat">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>370</number>
+     </property>
+     <property name="autoRepeatInterval">
+      <number>147</number>
      </property>
     </widget>
-    <widget class="QToolButton" name="toolButton_11">
+    <widget class="QPushButton" name="pushButton_11">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -252,17 +367,28 @@ background-color: rgb(46, 52, 54);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">#pushButton_11{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
-      <string>U</string>
+      <string/>
      </property>
      <property name="icon">
-      <iconset resource="graphlib.qrc">
-       <normaloff>:/icons/play.bmp</normaloff>:/icons/play.bmp</iconset>
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Play_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Play_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
-    <widget class="QToolButton" name="toolButton_12">
+    <widget class="QPushButton" name="pushButton_12">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -272,14 +398,25 @@ background-color: rgb(46, 52, 54);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">#pushButton_12{
+border-image: url(:off.png);
+border:none;
+selection-color: none;
+background-color: transparent;
+}</string>
      </property>
      <property name="text">
-      <string>L</string>
+      <string/>
      </property>
      <property name="icon">
-      <iconset resource="graphlib.qrc">
-       <normaloff>:/icons/folder_open.bmp</normaloff>:/icons/folder_open.bmp</iconset>
+      <iconset resource="icons-new/icons.qrc">
+       <normaloff>:/new_labcim_labBot/alfa/icons-new/Folder_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Folder_24x24.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox">
@@ -290,6 +427,9 @@ background-color: rgb(46, 52, 54);</string>
        <width>111</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="currentText">
+      <string/>
      </property>
     </widget>
     <widget class="QWidget" name="verticalLayoutWidget">
@@ -355,7 +495,7 @@ color:  rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>954</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLabBot">
@@ -394,6 +534,10 @@ color:  rgb(0, 0, 0);</string>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionNovo">
+   <property name="icon">
+    <iconset resource="icons-new/icons.qrc">
+     <normaloff>:/new_labcim_labBot/alfa/icons-new/Text Document_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Text Document_24x24.png</iconset>
+   </property>
    <property name="text">
     <string>Novo</string>
    </property>
@@ -402,6 +546,10 @@ color:  rgb(0, 0, 0);</string>
    </property>
   </action>
   <action name="actionAbrir">
+   <property name="icon">
+    <iconset resource="icons-new/icons.qrc">
+     <normaloff>:/new_labcim_labBot/alfa/icons-new/Open_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Open_24x24.png</iconset>
+   </property>
    <property name="text">
     <string>Abrir</string>
    </property>
@@ -410,6 +558,10 @@ color:  rgb(0, 0, 0);</string>
    </property>
   </action>
   <action name="actionSalvar_Como">
+   <property name="icon">
+    <iconset resource="icons-new/icons.qrc">
+     <normaloff>:/new_labcim_labBot/alfa/icons-new/Save_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Save_24x24.png</iconset>
+   </property>
    <property name="text">
     <string>Salvar Como</string>
    </property>
@@ -418,6 +570,10 @@ color:  rgb(0, 0, 0);</string>
    </property>
   </action>
   <action name="actionSalvar">
+   <property name="icon">
+    <iconset resource="icons-new/icons.qrc">
+     <normaloff>:/new_labcim_labBot/alfa/icons-new/Save_24x24.png</normaloff>:/new_labcim_labBot/alfa/icons-new/Save_24x24.png</iconset>
+   </property>
    <property name="text">
     <string>Salvar</string>
    </property>
@@ -428,7 +584,7 @@ color:  rgb(0, 0, 0);</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="graphlib.qrc"/>
+  <include location="icons-new/icons.qrc"/>
  </resources>
  <connections>
   <connection>
