@@ -8,7 +8,7 @@ It is a frontend to the robot controler via serial comunication and simulation t
 
 ## Building
 
-Clone tha git repository.
+Clone the git repository.
 
     git clone git@github.com:cimtools/new_labcim_labBot.git
     
