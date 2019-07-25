@@ -11,7 +11,7 @@ Krobosoft stands for KDE [Robosoft](https://github.com/cimtools/robosoft).
 
 Clone the git repository.
 
-    git clone git@github.com:cimtools/new_labcim_labBot.git
+    git clone git@github.com:cimtools/Krobosoft.git
     
 Install the dependencies.
 
