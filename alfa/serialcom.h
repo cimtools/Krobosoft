@@ -13,22 +13,22 @@ class SerialTerminal: public QTextEdit
 signals:
     /**
      * @brief Signal emitted when user press Enter or Return.
-     * @param data The String that is to be sent out of the terminal.
+     * @param data const QString & The String that is to be sent out of the terminal.
      */
     void emitDataReady( const QString & data );
     /**
      * @brief Sgnal emitted user press a single key.
-     * @param byte byte to be sent.
+     * @param byte char & byte to be sent.
      */
     void emitByteReady( const char & byte );
     /**
      * @brief Requests the log object to send a log line.
-     * @param linesFromEnd Position of the desired line. Counting from the end of the file (where is the last entry).
+     * @param linesFromEnd const int & Position of the desired line. Counting from the end of the file (where is the last entry).
      */
     void emitGetLog( const int & linesFromEnd );
     /**
      * @brief emitStoreCommand Signal to store a command in the log.
-     * @param command QString & Referenc to the command string to be stored on the log.
+     * @param command const QString & Referenc to the command string to be stored on the log.
      */
     void emitStoreCommand( const QString & command );
 public:
@@ -45,7 +45,7 @@ public:
 public slots:
     /**
      * @brief It change the current command to be sent. Used to iterate through the log entries.
-     * @param newCommand QString & The new value for the command.
+     * @param newCommand const QString & The new value for the command.
      */
     void setCommand( const QString & newCommand );
 protected:
@@ -74,7 +74,12 @@ class SerialCom : public QQuickItem
 public:
     /**
      * @brief Constructor function, it reeds all COM ports, stores it's names, then configure the instance of QSerialPort to future use.
-     * @param Get as parameters the configurations for the COM communication.
+     * Whit exception of baudRate, all other parameters are enums defined in QSerialPort class.
+     * @param baudRate qint32 Baud rate of the port.
+     * @param dataBytes QSerialPort::DataBits Number of data bits.
+     * @param parity QSerialPort::Parity Parity type.
+     * @param flowControl QSerialPort::FlowControl Type of flow control.
+     * @param stopBit QSerialPort::StopBits Set stop bit configuration.
      */
     SerialCom( qint32 baudRate = QSerialPort::Baud9600, QSerialPort::DataBits dataBytes = QSerialPort::Data8,
                 QSerialPort::Parity parity = QSerialPort::NoParity, QSerialPort::FlowControl flowControl = QSerialPort::NoFlowControl,
@@ -82,7 +87,7 @@ public:
     ~SerialCom();
     /**
      * @brief Reads the open COM ports, iterates through them and extracts it's names.
-     * @return Return the list of COM ports existents.
+     * @return QList<QString> Return the list of COM ports existents.
      */
     QList<QString> getCOMList();
     /**
@@ -95,19 +100,10 @@ public:
      */
     QString read();
     /**
-     * @brief Used to open communication with a COM port.
-     * @param COMName Qstring that contain the name of the desired COM port.
-     * @return Returns true if it succeeds in establish the connection, false otherwise.
+     * @brief Function used to know if changes in the list of COM ports occurred.
+     * @return Returns true if COM ports were added or subtracted, false otherwise.
      */
-    bool connect( const QString & COMName);
-    /**
-     * @brief Sends a QString to the open COM port.
-     * @param msg The QString to be sent.
-     * @return Returns true if it succeeds is sending the message, false otherwise.
-     */
-
     bool portListChanged();
-
 private:
     /**
      * @brief List of all available COM ports.
@@ -123,17 +119,24 @@ signals:
      */
     void readyRead();
 public slots:
+    /**
+     * @brief Sends a QString to the open COM port.
+     * @param msg const QString & The QString to be sent.
+     * @return int Returns true if it succeeds is sending the message, false otherwise.
+     */
     int send( const QString & msg);
     /**
      * @brief sendByte
-     * @param byte Byte to be sent.
+     * @param byte const char & Byte to be sent.
      * @return
      */
     int sendByte( const char & byte);
     /**
-     * @brief Function used to know if changes in the list of COM ports occurred.
-     * @return Returns true if COM ports were added or subtracted, false otherwise.
+     * @brief Used to open communication with a COM port.
+     * @param COMName const QString & Qstring that contain the name of the desired COM port.
+     * @return Returns true if it succeeds in establish the connection, false otherwise.
      */
+    bool connect( const QString & COMName);
 };
 
 #endif // SERIALCOM_H
