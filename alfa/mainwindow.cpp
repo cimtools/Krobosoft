@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->comboBox->addItem("");
     foreach( QString nome, listaAtualPortas ) ui->comboBox->addItem(nome);
 
-    QObject::connect( serial, &SerialCom::readyRead, [=](){ terminal->insertPlainText( serial->read() ); } );
+    QObject::connect( serial, &SerialCom::emitReadReady, [=](){ terminal->insertPlainText( serial->read() ); } );
     QObject::connect( terminal, &SerialTerminal::emitDataReady, serial, &SerialCom::send );
     //QObject::connect( terminal, &SerialTerminal::emitByteReady, serial, &SerialCom::sendByte );
 

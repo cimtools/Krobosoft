@@ -1,8 +1,20 @@
 #include "serialcom.h"
+#include <stdio.h>
 
 SerialTerminal::SerialTerminal(){
     setStyleSheet("background-color: rgb(0, 0, 0); color: rgb(78,154,6)");
     setReadOnly(true);
+}
+SerialTerminal::SerialTerminal(QString pathToLog): logDirectory(pathToLog){
+    setStyleSheet("background-color: rgb(0, 0, 0); color: rgb(78,154,6)");
+    setReadOnly(true);
+
+    logFile = new QFile(logDirectory);
+    //file.setFileName("readme.txt");//QT example
+    if ( !logFile->open( QIODevice::ReadWrite ) )
+        logDirectory = "";
+    else
+        logFile->close();
 }
 
 void SerialTerminal::keyPressEvent( QKeyEvent * e ){
@@ -19,6 +31,16 @@ void SerialTerminal::keyPressEvent( QKeyEvent * e ){
         qDebug() << "Store command: " << command;
         emit emitStoreCommand( command );
 
+        if(logFile!=nullptr){
+            if ( !logFile->open( QIODevice::WriteOnly | QIODevice::Append) ){
+                qDebug()<< "Error loging commands. Could not open log file.\n";
+            }else{
+                qDebug()<<"Loging command to file\n";
+                logFile->write( command.toStdString().c_str() );
+                logFile->close();
+            }
+        }
+
         for( int i = 0; i < command.size()-1 ; i++ ){
             textCursor().deletePreviousChar();
         }
@@ -34,8 +56,31 @@ void SerialTerminal::keyPressEvent( QKeyEvent * e ){
         }
         return;
     case Qt::Key_Up:
+        qDebug() << "Key up pressed\n";
         logLine ++;
-        emit emitGetLog( logLine );//Change the current command, doing GUI treatment.
+
+        if( logFile!=nullptr ){
+            setCommand( getLogLine( logLine ) );
+        }else{
+            emit emitGetLog( logLine );//Change the current command, doing GUI treatment.
+        }
+
+        break;
+    case Qt::Key_Down:
+        qDebug() << "Key up down\n";
+        if(logLine > 1){
+            logLine--;
+            if( logFile!=nullptr ){
+                setCommand( getLogLine( logLine ) );
+            }else{
+                emit emitGetLog( logLine );
+            }
+        }else if(logLine == 1){
+            logLine--;
+            setCommand(" ");
+        }else {
+            logLine =0;
+        }
         break;
     default:
         command += e->text();
@@ -44,6 +89,38 @@ void SerialTerminal::keyPressEvent( QKeyEvent * e ){
         insertPlainText(e->text()); //Comment this line too to stop echo on terminal.
         break;
     }
+    qDebug() << logLine;
+}
+
+QString SerialTerminal::getLogLine( int line ){
+    if( logFile->open(QIODevice::ReadOnly) ){
+        logFile->seek(logFile->size());
+        int lineCount = 0;
+        int lineCharCount =0;
+        while( lineCount < line  ){//TODO Fix loop sintax.
+            if(logFile->pos() ==1 ){
+                logFile->seek(logFile->pos()-1);
+                logLine = lineCount;
+                //TODO, ignore the next arrow up presse. preformance gain. multiple arrow up presses impact performance.
+                break;
+            }
+            logFile->seek(logFile->pos()-2);
+            QString readChar = logFile->read(1);//Reads a char
+            if ( readChar == "\n" || readChar == "\r" ){
+                lineCount++;
+                if(lineCount < line)
+                    lineCharCount=0;
+            }else{
+                lineCharCount++;
+            }
+        }
+        QString returnHold = logFile->read( lineCharCount );
+        logFile->close();
+        return returnHold;
+    }else{
+        qDebug() << "Could not open log file to load commands.\n";
+    }
+    return "";
 }
 
 void SerialTerminal::setCommand(const QString & newCommand ){
@@ -57,7 +134,7 @@ void SerialTerminal::setCommand(const QString & newCommand ){
 SerialCom::SerialCom( qint32 baudRate , QSerialPort::DataBits dataBytes ,
                       QSerialPort::Parity parity , QSerialPort::FlowControl flowControl ,
                       QSerialPort::StopBits stopBit ){
-    QObject::connect(&currentCOM, &QSerialPort::readyRead , this, &SerialCom::readyRead );
+    QObject::connect(&currentCOM, &QSerialPort::readyRead , this, &SerialCom::emitReadReady );
 
     COMList = QSerialPortInfo::availablePorts();
 
