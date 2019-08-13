@@ -53,10 +53,6 @@ void MainWindow::on_actionNovo_triggered(){
 void MainWindow::on_save_button_clicked(){
     saveFileAs();
 }
-//Save as action
-void MainWindow::on_actionSalvar_Como_triggered(){
-    saveFileAs();
-}
 //Open button
 void MainWindow::on_openButton_clicked(){
     openFile();
@@ -67,15 +63,13 @@ void MainWindow::on_actionAbrir_triggered(){
 }
 
 
-
 //####################################################################### FUNCTIONS
 
 void MainWindow::saveFileAs(){
     files = new aclFiles();
-    files->setFilename(1);
     QTextEdit * temp = (QTextEdit *) ui->tabWidget->currentWidget();
-
     if(files->saveToFile(temp->toPlainText())){
+        ui->tabWidget->setTabText(ui->tabWidget->currentIndex(), files->getFilename());
         ui->textEdit->setPlainText("Arquivo salvo com sucesso");
     } else {
         ui->textEdit->setPlainText("Falha ao salvar arquivo.");
@@ -94,7 +88,7 @@ void MainWindow::openTab(const QString name, QString content){
 
 void MainWindow::openFile(){
     files = new aclFiles();
-    files->setFilename();
+    files->openFiles();
     foreach(QString filepath, files->getFilePaths()){
         //qDebug() << filepath;
         openTab(files->getFilename(filepath), files->openFile(filepath));

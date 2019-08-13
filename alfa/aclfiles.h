@@ -67,6 +67,8 @@ public:
     * @return bool Confirms if the saving has occurrely succesfully.
     */
     bool saveToFile(QString content);
+
+    void openFiles();
     /**
      * @brief openFile Gets the content of a file pointed by filepath
      * @param filepath The path to a given file

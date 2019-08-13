@@ -43,8 +43,6 @@ private slots:
 
     void on_save_button_clicked();
 
-    void on_actionSalvar_Como_triggered();
-
     void on_new_button_clicked();
 
     void on_actionAbrir_triggered();

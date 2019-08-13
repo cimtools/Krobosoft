@@ -7,13 +7,6 @@ aclFiles::~aclFiles(){
 }
 
 void aclFiles::setFilename(bool type){
-    if(type){
-        fileDialog = new QFileDialog(nullptr, "Salvar");
-        fileDialog->setFileMode(QFileDialog::AnyFile);
-    } else {
-        fileDialog = new QFileDialog(nullptr, "Abrir");
-        fileDialog->setFileMode(QFileDialog::ExistingFiles);
-    }
     fileDialog->setNameFilter(QObject::tr("All files(*.dnl);;Text File(*.txt)"));
     fileDialog->setViewMode(QFileDialog::Detail);
     QFileInfo * Finfo;
@@ -60,21 +53,35 @@ QStringList aclFiles::getFilePaths(){
 }
 
 bool aclFiles::saveToFile(QString text){
-    if(filename != nullptr && filePath != nullptr){
-        file = new QFile(filePath);
-        if(file->open(QIODevice::ReadWrite)){
-            QTextStream content(file);
-            content << text << endl;
-        }
-        delete file;
-        return true;
+    filePath = QFileDialog::getSaveFileName(new QWidget,
+                                            QObject::tr("Salvar aquivo"), "",
+                                            QObject::tr("ACL File (*.dnl);;Text file(*.txt"));
+    file = new QFile(filePath);
+    QFileInfo * info = new QFileInfo(*file);
+    filename = info->baseName();
+    if(info->completeSuffix() == nullptr){
+        file->setFileName(file->fileName() + ".dnl");
     }
-    return false;
+    if(file->open(QIODevice::ReadWrite)){
+        QTextStream content(file);
+        content << text << endl;
+    }
+    delete file;
+    return true;
+}
+
+
+void aclFiles::openFiles(){
+    filePaths = QFileDialog::getOpenFileNames(new QWidget,
+                                                QObject::tr("Abrir arquivos"), "",
+                                                QObject::tr("ACL File (*.dnl);;Text file(*.txt"));
 }
 
 QString aclFiles::openFile(QString filepath){
     QString text;
-    if(filepath != nullptr){
+    if(filepath.isEmpty()){
+        return nullptr;
+    } else {
         file = new QFile(filepath);
         if(!file->open(QIODevice::ReadOnly | QIODevice::Text)){
             return nullptr;
@@ -87,5 +94,4 @@ QString aclFiles::openFile(QString filepath){
         delete file;
         return text;
     }
-    return nullptr;
 }
